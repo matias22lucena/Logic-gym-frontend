@@ -336,3 +336,35 @@ return (
             ))
           )}
         </Row>
+
+        <div className="text-center mb-5 pt-4">
+          <h2 className="fw-bold display-5">NUESTROS ENTRENADORES</h2>
+          <p className="text-muted">Expertos listos para maximizar tu rendimiento y acompañar tu proceso.</p>
+        </div>
+
+        <Row className="g-4 mb-5 justify-content-center trainers-row">
+          {[
+            { nombre: 'Diego', esp: 'Especialista en Musculación y Fuerza', img: publicidad1 },
+            { nombre: 'Matias', esp: 'Coordinador de Box y Funcional', img: publicidad2 },
+            { nombre: 'Milagros', esp: 'Instructora de Ritmos y Cardio', img: publicidad3 },
+            { nombre: 'Mariano', esp: 'Entrenador Funcional', img: publicidad4 }
+          ].map((prof, index) => (
+            <Col key={index} sm={6} md={3}>
+              <Card className="text-center border-0 bg-transparent">
+                <div className="prof-img-wrapper">
+                  <Card.Img 
+                    variant="top" 
+                    src={prof.img} 
+                    className="prof-img"
+                    loading="lazy"
+                    alt={prof.nombre}
+                  />
+                </div>
+                <Card.Body className="px-0 pt-3">
+                  <Card.Title className="fs-5 fw-bold mb-1 trainer-name">{prof.nombre}</Card.Title>
+                  <Card.Text className="text-muted small text-uppercase tracking-wider">{prof.esp}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
