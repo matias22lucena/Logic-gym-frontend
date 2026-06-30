@@ -302,3 +302,37 @@ return (
   </div>
 </div>       
 
+<hr className="section-divider my-5" />
+        <hr className="section-divider my-5" />
+        <div id="planes" className="text-center mb-5">
+          <h2 className="fw-bold display-5 mt-2 mb-3">EMPEZÁ HOY TU CAMBIO</h2>
+          <div className="decorbar-blue"></div>
+        </div>
+
+        <Row className="g-4 mb-5">
+          {cargandoPlanes ? (
+            <div className="text-center w-100 py-4">
+              <span className="text-muted">Cargando planes del gimnasio...</span>
+            </div>
+          ) : (
+            planes.map((plan, index) => (
+              <Col key={plan._id || index} md={4}>
+                <Card className="h-100 border-0 p-3 card-dark d-flex flex-column justify-content-between">
+                  <Card.Body className="d-flex flex-column justify-content-between">
+                    <div>
+                      <Card.Title className="fw-bold fs-4 mb-2 card-plan-title text-uppercase">{plan.titulo}</Card.Title>
+                      <h4 className="text-blue fw-bold mb-3">${plan.precio.toLocaleString('es-AR')}/mes</h4>
+                      <Card.Text className="text-muted card-plan-text">{plan.descripcion}</Card.Text>
+                    </div>
+                    <Button 
+                      className="w-100 mt-4 fw-bold py-2 btn-blue"
+                      onClick={() => handleConsultarPlan(plan.titulo)}
+                    >
+                      CONSULTAR PLAN
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          )}
+        </Row>
