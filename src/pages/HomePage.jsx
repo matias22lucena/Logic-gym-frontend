@@ -212,4 +212,66 @@ return (
         </div>
 
         <hr className="section-divider my-5" />
+        
+<div className="text-center mb-5">
+  <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS PRODUCTOS</h2>
+  <div className="decorbar-blue mb-0"></div>
+</div>
 
+<Row className="g-4 mb-5">
+  {productosVisibles.map((producto, i) => (
+    <Col key={i} sm={6} md={4}>
+      <div className="card-dark h-100 d-flex flex-column producto-card">
+        <div className="producto-img-container">
+          <img
+            src={producto.imagen}
+            alt={producto.nombre}
+            width={320}
+            height={180}
+            className="producto-img"
+          />
+          {producto.badge && (
+            <span className="producto-badge" style={{ background: producto.badgeColor }}>
+              {producto.badge}
+            </span>
+          )}
+        </div>
+        <div className="producto-body">
+          <span className="text-uppercase fw-bold mb-1 producto-categoria">
+            {producto.categoria}
+          </span>
+          <h5 className="fw-bold text-white mb-2 producto-titulo">
+            {producto.nombre}
+          </h5>
+          <p className="mb-3 flex-grow-1 producto-descripcion">
+            {producto.descripcion}
+          </p>
+          
+          <div className="d-flex justify-content-between align-items-center mt-auto mb-3">
+            <span className="fw-bold producto-precio">
+              ${producto.precio}
+            </span>
+            <span className="small fw-bold text-uppercase producto-tag-local">
+              En local
+            </span>
+          </div>
+
+          <Button
+            type="button"
+            className="w-100 fw-bold py-2 btn-blue"
+            style={{ fontSize: '0.85rem' }}
+            onClick={() => agregarAlCarrito({
+              nombre: producto.nombre,
+              categoria: producto.categoria,
+              precio: producto.precio,
+            })}
+            aria-label={`Agregar ${producto.nombre} al carrito`}
+          >
+             AGREGAR AL CARRITO
+          </Button>
+        </div>
+
+      </div>
+    </Col>
+  ))}
+</Row>
