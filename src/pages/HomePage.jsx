@@ -212,7 +212,7 @@ return (
         </div>
 
         <hr className="section-divider my-5" />
-        
+
 <div className="text-center mb-5">
   <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS PRODUCTOS</h2>
   <div className="decorbar-blue mb-0"></div>
@@ -275,3 +275,30 @@ return (
     </Col>
   ))}
 </Row>
+
+<div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-5">
+  <div className="text-muted small">
+    Mostrando {productosVisibles.length} de {productos.length} productos
+  </div>
+  <div className="d-flex gap-2">
+    <button
+      type="button"
+      className="btn btn-outline-secondary btn-sm"
+      disabled={paginaProductos === 1}
+      onClick={() => setPaginaProductos((page) => Math.max(page - 1, 1))}
+      aria-label="Página anterior de productos"
+    >
+      Anterior
+    </button>
+    <button
+      type="button"
+      className="btn btn-outline-secondary btn-sm"
+      disabled={paginaProductos === totalPaginasProductos}
+      onClick={() => setPaginaProductos((page) => Math.min(page + 1, totalPaginasProductos))}
+      aria-label="Página siguiente de productos"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>       
+
