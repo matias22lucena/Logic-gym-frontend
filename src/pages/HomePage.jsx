@@ -1,21 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
+import { ContextoCarrito } from '../components/carrito/Carrito';
 
-
-
-
+import WidgetClima from '../components/clima/Clima';
+import BannerInfinito from '../components/banner/BannerInfinito';
 import './App.css';
-
-import publicidad0 from '../assets/publicidad0.jpg';
+import publicidad0 from '../assets/publicidad0.png';
 import publicidad1 from '../assets/publicidad1.jpg';
-import publicidad2 from '../assets/publicidad2.webp';
+import publicidad2 from '../../../assets/publicidad2.webp';
 import publicidad3 from '../assets/publicidad3.jpg';
 import publicidad4 from '../assets/publicidad4.png';
 import publicidad5 from '../assets/publicidad5.jpg';
 
-import imgCuerda from '../assets/cuerda6.jpg';
+import imgCuerda from '../assets/Cuerda6.jpg';
 import imgRemera from '../assets/remera5.jpg';
 import imgShaker from '../assets/Shaker4.jpg';
 import imgGuantes from '../assets/Guantes3.jpg';
@@ -128,7 +127,8 @@ const productosIniciales = [
     badgeColor: null
   },
 ];
-const Home = () => {
+
+const HomePage = () => {
   const [planes, setPlanes] = useState([]);
   const [cargandoPlanes, setCargandoPlanes] = useState(true);
   const [productos, setProductos] = useState(productosIniciales);
@@ -171,14 +171,17 @@ const Home = () => {
 
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
-  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina);
-  
-return (
+  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina); 
+
+  return (
     <div className="home-bg text-white min-vh-100">
       
       <section className="hero-section" aria-labelledby="hero-heading">
         <video className="hero-video" autoPlay muted loop playsInline src={heroVideo} poster={publicidad0} preload="metadata" />
       </section>
+
+
+
       <Container className="py-4">
         <Row className="mb-5 justify-content-center">
           <Col lg={5} md={8}>
@@ -300,7 +303,7 @@ return (
       Siguiente
     </button>
   </div>
-</div>       
+</div>
 
 <hr className="section-divider my-5" />
         <hr className="section-divider my-5" />
@@ -369,7 +372,7 @@ return (
           ))}
         </Row>
 
-section className="comentarios">
+        <section className="comentarios">
           <div className="container">
             <div className="text-center mb-5">
               <h2 className="fw-bold display-5 mt-2 mb-3">OPIONIONES <span className="text-blue">REALES</span></h2>
@@ -405,4 +408,12 @@ section className="comentarios">
             </div>
           </div>
         </section>
-        
+
+        <BannerInfinito className="my-4" />
+
+      </Container>
+    </div>
+  );
+};
+
+export default HomePage;
