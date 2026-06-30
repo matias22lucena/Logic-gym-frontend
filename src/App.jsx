@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react"
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 import Registro from "./pages/RegistroPages";
+import Login from "./pages/IniciarSesionPage";
 
 const App = () => {
 
@@ -35,6 +36,7 @@ return (
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
       <Route path="*" element={<Error404></Error404>}/> */}
+      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
        <Route path="/registro" element={<Registro/>}/>
     </Routes>
    </main>
