@@ -171,4 +171,45 @@ const Home = () => {
 
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
-  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina); 
+  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina);
+  
+return (
+    <div className="home-bg text-white min-vh-100">
+      
+      <section className="hero-section" aria-labelledby="hero-heading">
+        <video className="hero-video" autoPlay muted loop playsInline src={heroVideo} poster={publicidad0} preload="metadata" />
+      </section>
+      <Container className="py-4">
+        <Row className="mb-5 justify-content-center">
+          <Col lg={5} md={8}>
+            <WidgetClima />
+          </Col>
+        </Row>
+
+        <div className="text-center mb-5 pt-3">
+          <span className="text-muted text-uppercase small tracking-widest fw-bold">Lo que ofrecemos</span>
+          <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS SERVICIOS</h2>
+          <div className="decorbar-blue mb-0"></div>
+        </div>
+
+        <div className="servicios-carousel mb-5">
+          <div className="servicios-track">
+            {[...servicios, ...servicios].map((servicio, index) => (
+              <div key={`servicio-${index}`} className="servicio-card card-dark">
+                <img
+                  className="servicio-card-image"
+                  src={mapaImagenesServicios[servicio.imagen]}
+                  alt={servicio.titulo}
+                  loading="lazy"
+                />
+                <div className="servicio-card-body">
+                  <h5 className="fw-bold servicio-card-title">{servicio.titulo}</h5>
+                  <p className="servicio-card-text">{servicio.descripcion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <hr className="section-divider my-5" />
+
