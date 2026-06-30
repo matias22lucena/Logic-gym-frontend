@@ -128,3 +128,47 @@ const productosIniciales = [
     badgeColor: null
   },
 ];
+const Home = () => {
+  const [planes, setPlanes] = useState([]);
+  const [cargandoPlanes, setCargandoPlanes] = useState(true);
+  const [productos, setProductos] = useState(productosIniciales);
+  const [paginaProductos, setPaginaProductos] = useState(1);
+  const navigate = useNavigate();
+  
+  const { agregarAlCarrito } = useContext(ContextoCarrito);
+
+  useEffect(() => {
+    const fetchPlanes = async () => {
+      try {
+        const { data } = await API.get('/');
+        setPlanes(data);
+      } catch (error) {
+        console.error("Error al cargar planes desde el backend:", error);
+        setPlanes([
+          { titulo: 'PLAN SOLO MUSCULACIÓN', descripcion: 'Acceso ilimitado a nuestra sala de pesas, máquinas de fuerza y sector de peso libre de última generación.', precio: 15000 },
+          { titulo: 'PLAN SOLO CLASES', descripcion: 'Participá de todas nuestras clases guiadas: Funcional, Ritmos, HIIT, Stretching y mucho más.', precio: 18000 },
+          { titulo: 'PLAN FULL', descripcion: 'Acceso libre y total sin restricciones: Musculación, todas las clases del gimnasio y asesoramiento personalizado.', precio: 25000 }
+        ]);
+      } finally {
+        setCargandoPlanes(false);
+      }
+    };
+
+    const fetchProductos = async () => {
+      try {
+        const { data } = await API.get('/productos');
+        if (Array.isArray(data) && data.length > 0) {
+          setProductos(data);
+        }
+      } catch (error) {
+        console.warn('No se pudo cargar productos desde backend, usando lista local.');
+      }
+    };
+
+    fetchPlanes();
+    fetchProductos();
+  }, []);
+
+  const tamanioPagina = 3;
+  const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
+  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina); 
