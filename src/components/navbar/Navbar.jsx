@@ -1,6 +1,8 @@
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./Navbar.css";
+import Login from "../../pages/IniciarSesionPage";
+import Registro from "../../pages/RegistroPages";
 
 const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
@@ -53,7 +55,7 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
           Login
           </Nav.Link>
 
-          <Nav.Link as={NavLink} to={"/Registrate"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/Registro"} className="custom-link">
           Registrate
           </Nav.Link>
           </>

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useEffect, useState } from "react"
+import Navbar from "./components/navbar/Navbar";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
@@ -21,6 +22,7 @@ const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
 return (
     <>
     <BrowserRouter>
+    <Navbar></Navbar>
 
    <main>
     <Routes>
