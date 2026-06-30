@@ -368,3 +368,40 @@ return (
             </Col>
           ))}
         </Row>
+
+section className="comentarios">
+          <div className="container">
+            <div className="text-center mb-5">
+              <h2 className="fw-bold display-5 mt-2 mb-3">OPIONIONES <span className="text-blue">REALES</span></h2>
+            </div>
+            <div className="cuadricula-3">
+              <div className="tarjeta-testimonio">
+                <p>"Excelente ambiente y la calidad del equipamiento de fuerza es insuperable. El staff realmente sabe lo que hace y te corrigen la técnica al detalle."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">srcum</div>
+                  <div className="detalles-usuario">
+                    <h4>Scrum cambiar nombre</h4>
+                  </div>
+                </div>
+              </div>
+              <div className="tarjeta-testimonio">
+                <p>"El sector de suplementación integrado me facilita la vida. Los planes personalizados me ayudaron a quebrar mis récords personales en sentadilla en pocos meses."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">DC</div>
+                  <div className="detalles-usuario">
+                    <h4>Daniela Cardozo</h4>   
+                  </div>
+                </div>
+              </div>
+              <div className="tarjeta-testimonio">
+                <p>"Limpio, ordenado y con la música ideal para entrenar pesado. Los profesores de funcional son de primer nivel. Un gimnasio con identidad de verdad."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">PM</div>
+                  <div className="detalles-usuario">
+                    <h4>Pablo Marino</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
