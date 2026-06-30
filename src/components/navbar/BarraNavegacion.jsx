@@ -1,10 +1,11 @@
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
-import { Link, NavLink, useNavigate } from "react-router";
-import "./Navbar.css";
+import { Link, NavLink, useNavigate } from "react-router-dom"; 
+import "../navbar/BarraNavegacion.css";
 import Login from "../../pages/IniciarSesionPage";
 import Registro from "../../pages/RegistroPages";
 
-const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
+
+const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
   const logout = () => {
     setUsuarioLogueado(false);
@@ -25,11 +26,9 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
         <Nav className="mx-auto gap-5">
 
           {usuarioLogueado && usuarioLogueado.role === "admin" && (
-              
                 <NavLink as={NavLink} to={"/administrador"} className="custom-link">
                   Administrador
                 </NavLink>
-                
             )}
 
           <Nav.Link as={NavLink} to={"/"} className="custom-link">
@@ -39,7 +38,6 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
           <Nav.Link as={NavLink} to={"/planes"} className="custom-link">
           Planes
           </Nav.Link>
-
 
           <Nav.Link as={NavLink} to={"/contacto"} className="custom-link">
           Contacto
@@ -65,7 +63,6 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
               <Button variant="dark" onClick={logout}>
                   Logout
                 </Button>
-              
             )}
 
         </Nav>
@@ -76,4 +73,4 @@ const Navbar = ({ usuarioLogueado, setUsuarioLogueado }) => {
   )
 }
 
-export default Navbar
+export default BarraNavegacion;
