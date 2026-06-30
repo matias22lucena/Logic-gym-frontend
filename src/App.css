@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Racing+Sans+One&display=swap');
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -181,4 +183,74 @@
     right: 0;
     border-right-color: var(--border);
   }
+}
+
+/*contacto*/
+
+
+.contacto-wrapper {
+    min-height: 80vh;
+    color: #ffffff;
+}
+
+.contacto-titulo {
+    font-weight: bolder;
+    font-family: "Bebas Neue", sans-serif;
+    color: #2A92FC;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.contacto-subtitulo {
+    color: #0466c8;
+    font-size: 1.1rem;
+}
+
+.contacto-caja {
+    background-color: #111111;
+    border-radius: 12px;
+    border: 1px solid #222222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px #0466c8;
+}
+
+.contacto-label {
+    color: #dddddd;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.contacto-caja .contacto-input {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    color: #ffffff;
+}
+
+.contacto-caja .contacto-input::placeholder {
+    color: #888888;
+}
+
+.contacto-caja .contacto-input:focus {
+    background-color: #222222;
+    color: #ffffff;
+    border-color: #0466c8;
+    box-shadow: 0 0 0 0.25rem #0466c8;
+}
+
+.contacto-caja .contacto-btn {
+    background-color: transparent;
+    color: #0466c8;
+    border: 2px solid #0466c8;
+    padding: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.contacto-caja .contacto-btn:hover {
+    background-color: #0466c8;
+    border-color: #0466c8;
+    color: #111111;
+    box-shadow: 0 0 15 #0466c8;
 }

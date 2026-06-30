@@ -1,11 +1,10 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import Swal from "sweetalert2";
-import emailjs from '@emailjs/browser';
-import "../../App.css";
-
+import emailjs from "@emailjs/browser";
+import "../App.css"
 
 const Contacto = () => {
 
@@ -14,15 +13,22 @@ const Contacto = () => {
   const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
 
     const onSubmit = (data) => {
+        console.log("Datos que van a EmailJS:", data)
 
-    emailjs.sendForm('service_jrhz7v4', 'template_rogvm1j', form.current, {
+    emailjs.send(
+      'service_jrhz7v4', 
+      'template_mmydrwv', 
+      data,
+      {
         publicKey: 'mlY5x0EOdTdAIw-JR',
-    })
+      }
+    )
     .then(
       () => {
         Swal.fire({

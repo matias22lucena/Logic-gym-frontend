@@ -6,6 +6,7 @@ import BarraNavegacion from "./components/navbar/BarraNavegacion";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
+import Contacto from "./pages/Contacto";
 
 const App = () => {
 
@@ -26,6 +27,7 @@ return (
 
    <main>
     <Routes>
+      <Route path="/contacto" element={<Contacto/>}/>
 {/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
