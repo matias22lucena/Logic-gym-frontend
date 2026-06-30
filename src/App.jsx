@@ -1,29 +1,26 @@
-import { BrowserRouter, Route, Routes } from "react-router"
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { useEffect, useState } from "react"
-import ProtectorAdmin from "./components/routes/ProtectorAdmin"
+import { BrowserRouter, Route, Routes } from "react-router";
+import { useEffect, useState } from "react";
+import ProtectorAdmin from "./components/routes/ProtectorAdmin";
+import Footer from "./components/footer/Footer";
 import Registro from "./pages/RegistroPages";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-
-
-const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+  const sesionUsuario =
+    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
   const [usuarioLogueado, setUsuarioLogueado] = useState(sesionUsuario);
-  const [productos, setProductos] = useState([])
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-  sessionStorage.setItem('usuarioKey', JSON.stringify(usuarioLogueado))
-}, [usuarioLogueado])
+    sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogueado));
+  }, [usuarioLogueado]);
 
-
-return (
+  return (
     <>
-    <BrowserRouter>
-
-   <main>
-    <Routes>
-{/*       <Route path="/" element={<Home/>}/>
+      <BrowserRouter>
+        <main>
+          <Routes>
+            {/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
      
@@ -35,13 +32,13 @@ return (
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
       <Route path="*" element={<Error404></Error404>}/> */}
-       <Route path="/registro" element={<Registro/>}/>
-    </Routes>
-   </main>
-{/*    <Footer></Footer> */}
-   </BrowserRouter>
+            <Route path="/registro" element={<Registro />} />
+          </Routes>
+        </main>
+        <Footer path="footer"></Footer>
+      </BrowserRouter>
     </>
-)
-}
+  );
+};
 
-export default App
+export default App;
