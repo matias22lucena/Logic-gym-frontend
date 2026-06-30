@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useEffect, useState } from "react"
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
-
+import Registro from "./pages/RegistroPages";
 
 const App = () => {
 
@@ -20,13 +20,13 @@ const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
 return (
     <>
     <BrowserRouter>
-   <Menu></Menu>
+
    <main>
     <Routes>
-      <Route path="/" element={<Home/>}/>
+{/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
-      <Route path="/registro" element={<Registro/>}/>
+     
       <Route path="/contacto" element={<Contacto/>}/>
       <Route path="/administrador" element={
         <ProtectorAdmin usuarioLogueado={usuarioLogueado}></ProtectorAdmin>}>
@@ -34,10 +34,11 @@ return (
       <Route path="crear" element={<FormularioProducto titulo="Crear Producto"></FormularioProducto>}/>
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
-      <Route path="*" element={<Error404></Error404>}/>
+      <Route path="*" element={<Error404></Error404>}/> */}
+       <Route path="/registro" element={<Registro/>}/>
     </Routes>
    </main>
-   <Footer></Footer>
+{/*    <Footer></Footer> */}
    </BrowserRouter>
     </>
 )
