@@ -70,7 +70,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.36) 100%); /* overlay más visible */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.36) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -234,9 +234,9 @@
   z-index: 2;
 }
 
-/* --- CUERPO Y TEXTOS --- */
+
 .producto-body {
-  padding: 1.5rem; /* Equivalente a p-4 */
+  padding: 1.5rem; 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
