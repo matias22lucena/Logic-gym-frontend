@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
 
 const Formulario = ({ idPage, setUsuarioLogueado }) => {
-  const URL_USUARIOS = "http://localhost:3000/api/usuarios";
+const URL_USUARIOS = `${import.meta.env.VITE_API_URL}/usuarios`;
 
   const navegacion = useNavigate();
 
