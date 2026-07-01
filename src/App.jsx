@@ -1,32 +1,31 @@
-import { BrowserRouter, Route, Routes } from "react-router"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from "react-router";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import BarraNavegacion from "./components/navbar/BarraNavegacion";
-import ProtectorAdmin from "./components/routes/ProtectorAdmin"
+import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
+import SobreNosotros from "./pages/SobreNosotros";
 
 const App = () => {
-
-
-const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+  const sesionUsuario =
+    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
   const [usuarioLogueado, setUsuarioLogueado] = useState(sesionUsuario);
-  const [productos, setProductos] = useState([])
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-  sessionStorage.setItem('usuarioKey', JSON.stringify(usuarioLogueado))
-}, [usuarioLogueado])
+    sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogueado));
+  }, [usuarioLogueado]);
 
-
-return (
+  return (
     <>
-    <BrowserRouter>
-    <BarraNavegacion></BarraNavegacion>
+      <BrowserRouter>
+        <BarraNavegacion></BarraNavegacion>
 
-   <main>
-    <Routes>
-{/*       <Route path="/" element={<Home/>}/>
+        <main>
+          <Routes>
+            {/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
      
@@ -38,14 +37,21 @@ return (
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
       <Route path="*" element={<Error404></Error404>}/> */}
-      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
-       <Route path="/registro" element={<Registro/>}/>
-    </Routes>
-   </main>
-{/*    <Footer></Footer> */}
-   </BrowserRouter>
+            <Route
+              path="sobreNosotros"
+              element={<SobreNosotros></SobreNosotros>}
+            />
+            <Route
+              path="/login"
+              element={<Login setUsuarioLogueado={setUsuarioLogueado} />}
+            />
+            <Route path="/registro" element={<Registro />} />
+          </Routes>
+        </main>
+        {/*    <Footer></Footer> */}
+      </BrowserRouter>
     </>
-)
-}
+  );
+};
 
-export default App
+export default App;
