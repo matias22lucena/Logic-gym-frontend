@@ -6,7 +6,7 @@ import { ContextoCarrito } from '../components/carrito/Carrito';
 
 import WidgetClima from '../components/clima/Clima';
 import BannerInfinito from '../components/banner/BannerInfinito';
-import './App.css';
+import '../pages/HomePage.css';
 import publicidad0 from '../assets/publicidad0.png';
 import publicidad1 from '../assets/publicidad1.jpg';
 import publicidad2 from '../../../assets/publicidad2.webp';
