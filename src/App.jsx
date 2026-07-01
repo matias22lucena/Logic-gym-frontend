@@ -8,18 +8,16 @@ import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
 
 const App = () => {
-
-
-const sesionUsuario = JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+  const sesionUsuario =
+    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
   const [usuarioLogueado, setUsuarioLogueado] = useState(sesionUsuario);
-  const [productos, setProductos] = useState([])
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-  sessionStorage.setItem('usuarioKey', JSON.stringify(usuarioLogueado))
-}, [usuarioLogueado])
+    sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogueado));
+  }, [usuarioLogueado]);
 
-
-return (
+  return (
     <>
     <BrowserRouter>
     <BarraNavegacion></BarraNavegacion>
@@ -45,7 +43,7 @@ return (
 {/*    <Footer></Footer> */}
    </BrowserRouter>
     </>
-)
-}
+  );
+};
 
-export default App
+export default App;
