@@ -7,6 +7,9 @@ import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
 import Footer from "./components/footer/Footer"
+import Home from "./pages/HomePage";
+import { CartProvider } from './components/carrito/carrito.jsx';
+
 import HomePage from "./pages/HomePage";
 const App = () => {
   const sesionUsuario =
@@ -21,6 +24,7 @@ const App = () => {
   return (
     <>
     <BrowserRouter>
+    <CartProvider>
     <BarraNavegacion></BarraNavegacion>
 
    <main>
@@ -45,6 +49,7 @@ const App = () => {
     </Routes>
    </main>
 <Footer></Footer> 
+</CartProvider>
    </BrowserRouter>
     </>
   );
