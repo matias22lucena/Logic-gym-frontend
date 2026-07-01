@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer"
 import Home from "./pages/HomePage";
 import { CartProvider } from './components/carrito/carrito.jsx';
 
+import HomePage from "./pages/HomePage";
 const App = () => {
   const sesionUsuario =
     JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
@@ -28,7 +29,8 @@ const App = () => {
 
    <main>
     <Routes>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<HomePage/>}/>
+      
 {/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
@@ -41,6 +43,7 @@ const App = () => {
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
       <Route path="*" element={<Error404></Error404>}/> */}
+
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
        <Route path="/registro" element={<Registro/>}/>
     </Routes>
