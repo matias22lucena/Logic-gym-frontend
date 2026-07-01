@@ -1,0 +1,441 @@
+:root {
+  --bg-primary: #080808;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --bg-card-hover: #a5a3a3;
+  --accent-blue: #2979ff;
+  --accent-blue-light: #5393ff;
+  --accent-blue-dim: rgba(41, 121, 255, 0.15);
+  --accent-glow: rgba(41, 121, 255, 0.3);
+  --text-white: #f5f5f5;
+  --text-gray: #c7c7c7;
+  --text-muted: #dadada;
+  --border-color: #1f1f1f;
+  --border-color-active: #2979ff;
+  --font-main: 'Outfit', 'system-ui', -apple-system, sans-serif;
+}
+
+.home-bg {
+  background-color: var(--bg-primary);
+}
+
+.home-bg .card-dark {
+  background-color: #11131a ;
+  border-color: #222735 ;
+  color: #e5e5e5 ;
+}
+
+.home-bg .card-dark .card-body,
+.home-bg .card-dark .card-text,
+.home-bg .card-dark .card-title,
+.home-bg .card-dark .card-footer {
+  background: transparent !important;
+  color: #d1d1d1 !important;
+}
+
+.home-bg .text-secondary {
+  color: #c3c3c3 !important;
+}
+
+.home-bg .text-muted {
+  color: #a6a6a6 !important;
+}
+
+.home-bg .servicio-card-text,
+.home-bg .card-plan-text,
+.home-bg .clima-tip,
+.home-bg .text-muted.small {
+  color: #b8b8b8 !important;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  height: 640px; 
+  min-height: 420px;
+  text-align: center;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.36) 100%); /* overlay más visible */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.clima-widget {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(10, 14, 22, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-radius: 22px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.clima-widget:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 183, 77, 0.6);
+}
+
+.clima-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  border-radius: 50%;
+  background: rgba(255, 183, 77, 0.15); 
+  border: 1px solid rgba(255, 183, 77, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clima-icon {
+  font-size: 2.4rem;
+  color: #ffb74d;
+}
+
+.clima-temp {
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.clima-chip-row {
+  gap: 0.75rem;
+}
+
+.clima-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 183, 77, 0.1); 
+  border: 1px solid rgba(255, 183, 77, 0.35);
+  color: #ffffff; 
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.clima-tip {
+  color: #94a3b8; 
+}
+
+.servicio-card {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.servicio-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.63);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.servicio-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.servicio-card-body {
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.servicio-card-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.85rem;
+  color: #ffffff;
+}
+
+.servicio-card-text {
+  color: #bfc3cf;
+  line-height: 1.8;
+}
+
+.servicios-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.servicios-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scrollServicios 30s linear infinite;
+  align-items: stretch;
+  padding-bottom: 0.5rem;
+}
+
+.servicios-track .servicio-card {
+  flex: 0 0 320px;
+  min-width: 320px;
+}
+
+.servicios-carousel:hover .servicios-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollServicios {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.producto-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.producto-img-container {
+  background: #ffffff;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 16px;
+}
+
+.producto-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.producto-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* --- CUERPO Y TEXTOS --- */
+.producto-body {
+  padding: 1.5rem; /* Equivalente a p-4 */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.producto-categoria {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #616161;
+}
+
+.producto-titulo {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.producto-descripcion {
+  font-size: 0.85rem;
+  color: #9e9e9e;
+  line-height: 1.6;
+}
+
+.producto-precio {
+  color: #2979ff;
+  font-size: 1.2rem;
+}
+
+.producto-tag-local {
+  color: #a7a4a4;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  cursor: default;
+}
+.card-plan-title {
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+}
+
+.card-plan-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-gray);
+}
+
+.prof-img-wrapper {
+  overflow: hidden;
+  border-radius: 10px;
+  height: 320px;
+  position: relative;
+}
+
+.prof-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.prof-img {
+  filter: grayscale(90%);
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), filter 0.5s ease;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.prof-img:hover {
+  filter: grayscale(0%) !important;
+  transform: scale(1.06);
+}
+
+.trainers-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.trainers-row > .col-md-3 {
+  flex: 0 0 calc(25% - 1.5rem);
+  max-width: calc(25% - 1.5rem);
+}
+
+@media (max-width: 992px) {
+  .trainers-row > .col-md-3 {
+    flex: 0 0 calc(50% - 1.5rem);
+    max-width: calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .trainers-row > .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.trainer-name {
+  color: #f2f2f2 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.comentarios {
+  background-color: var(--bg-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3rem 0;
+}
+
+.cuadricula-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta-testimonio {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.tarjeta-testimonio::before {
+  content: "“";
+  font-size: 5rem;
+  color: rgba(0, 82, 204, 0.2);
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  font-family: serif;
+  line-height: 1;
+}
+
+.tarjeta-testimonio p {
+  color: rgba(255, 255, 255, 0.95);
+  font-style: italic;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.informacion-usuario {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.imagen-usuario {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(41, 121, 255, 0.15);
+  border: 1px solid rgba(41, 121, 255, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.detalles-usuario h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.detalles-usuario span {
+  font-size: 0.8rem;
+  color: var(--accent-blue);
+}
+
+@media (max-width: 992px) {
+  .cuadricula-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .cuadricula-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .tarjeta-testimonio {
+    padding: 30px;
+  }
+
+  .tarjeta-testimonio::before {
+    top: 5px;
+    left: 15px;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 420px;
+    padding: 0;
+  }
+}
