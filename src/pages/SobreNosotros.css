@@ -1,0 +1,83 @@
+.sobreNosotrosCuerpo {
+  background-color: #111111;
+  color: white;
+}
+
+.bannerLogicGym {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  width: 100%;
+  border-bottom: 4px solid #0766ff;
+}
+
+.bannerLogicGym h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background-color: #111111;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #111111;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cardImg {
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-bottom: 4px solid #0766ff;
+  transition: transform 0.4s ease;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.cardTitle {
+  color: #0766ff;
+  font-weight: bold;
+}
+
+.cardRol {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cardDescripcion {
+  color: white;
+  line-height: 1.5;
+  font-weight: bold;
+  flex-grow: 1;
+}
