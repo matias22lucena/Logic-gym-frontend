@@ -7,7 +7,11 @@ import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
 import SobreNosotros from "./pages/SobreNosotros";
+import Footer from "./components/footer/Footer"
+import Home from "./pages/HomePage";
+import { CartProvider } from './components/carrito/carrito.jsx';
 
+import HomePage from "./pages/HomePage";
 const App = () => {
   const sesionUsuario =
     JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
@@ -26,6 +30,15 @@ const App = () => {
         <main>
           <Routes>
             {/*       <Route path="/" element={<Home/>}/>
+    <BrowserRouter>
+    <CartProvider>
+    <BarraNavegacion></BarraNavegacion>
+
+   <main>
+    <Routes>
+      <Route path="/" element={<HomePage/>}/>
+      
+{/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
      
@@ -50,6 +63,14 @@ const App = () => {
         </main>
         {/*    <Footer></Footer> */}
       </BrowserRouter>
+
+      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
+       <Route path="/registro" element={<Registro/>}/>
+    </Routes>
+   </main>
+<Footer></Footer> 
+</CartProvider>
+   </BrowserRouter>
     </>
   );
 };

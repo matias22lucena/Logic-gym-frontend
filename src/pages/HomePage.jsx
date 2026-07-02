@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-import { ContextoCarrito } from '../components/carrito/Carrito';
+import { ContextoCarrito } from "../components/carrito/carrito.jsx";
 
-import WidgetClima from '../components/clima/Clima';
-import BannerInfinito from '../components/banner/BannerInfinito';
-import './App.css';
+import WidgetClima from '../components/clima/Clima.jsx';
+import BannerInfinito from "../components/bannerInfinito/BannerInfinito.jsx";
+import '../pages/HomePage.css';
 import publicidad0 from '../assets/publicidad0.png';
 import publicidad1 from '../assets/publicidad1.jpg';
-import publicidad2 from '../../../assets/publicidad2.webp';
+import publicidad2 from '../assets/publicidad2.webp';
 import publicidad3 from '../assets/publicidad3.jpg';
 import publicidad4 from '../assets/publicidad4.png';
 import publicidad5 from '../assets/publicidad5.jpg';
@@ -140,7 +140,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPlanes = async () => {
       try {
-        const { data } = await API.get('/');
+        const { data } = await API.get('/carrito');
         setPlanes(data);
       } catch (error) {
         console.error("Error al cargar planes desde el backend:", error);
