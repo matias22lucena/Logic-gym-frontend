@@ -43,7 +43,7 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
           Contacto
           </Nav.Link>
 
-          <Nav.Link as={NavLink} to={"/nosotros"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/sobrenosotros"} className="custom-link">
           Nosotros
           </Nav.Link>
 

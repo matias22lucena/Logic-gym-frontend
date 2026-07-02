@@ -1,0 +1,111 @@
+.footer {
+  background-color: #111;
+  color: #fff;
+  padding: 48px 0;
+  border-top: 1px solid #222;
+}
+
+.footerLogo {
+  max-width: 120px;
+  margin-top: 10px;
+}
+
+.descripcionFooter {
+  color: #bdbdbd;
+  font-size: 17px;
+}
+
+.redesSociales {
+  display: flex;
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+.redesSociales a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.wsp:hover {
+  color: #25d366;
+  transform: translateY(-2px);
+}
+
+.instagram:hover {
+  color: #f927a3;
+  transform: translateY(-2px);
+}
+
+.facebook:hover {
+  color: #0766ff;
+  transform: translateY(-2px);
+}
+
+.x:hover {
+  color: grey;
+  transform: translateY(-2px);
+}
+
+.titulo {
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.linksNavegacion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linksNavegacion a {
+  text-decoration: none;
+  color: #bdbdbd;
+  transition: color 0.3s ease;
+}
+
+.linksNavegacion a:hover {
+  color: #0766ff;
+}
+
+.botonCopy {
+  border-top: 1px solid #1619e3;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.contacto {
+  display: block;
+  color: #bdbdbd;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+  text-align: center;
+}
+
+.contacto:hover {
+  color: #25d366;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+
+  .footer-links {
+    margin-top: 1rem;
+  }
+
+  .footer-logo {
+    margin: 10px auto;
+    display: block;
+  }
+}

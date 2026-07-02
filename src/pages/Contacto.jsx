@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
-import "../App.css"
+import "./Contacto.css"
 
 const Contacto = () => {
 
