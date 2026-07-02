@@ -76,7 +76,7 @@ const Contacto = () => {
                   })} 
                 />
                 <Form.Text className="text-danger">
-                    {errors.nombre?.message}
+                    {errors.user_name?.message}
                 </Form.Text>
               </Form.Group>
 
@@ -96,7 +96,7 @@ const Contacto = () => {
                   })} 
                 />
                 <Form.Text className="text-danger">
-                    {errors.email?.message}
+                    {errors.user_email?.message}
                 </Form.Text>
               </Form.Group>
 
@@ -120,7 +120,7 @@ const Contacto = () => {
                   })} 
                 />
                 <Form.Text className="text-danger">
-                    {errors.mensaje?.message}
+                    {errors.message?.message}
                 </Form.Text>
               </Form.Group>
 
