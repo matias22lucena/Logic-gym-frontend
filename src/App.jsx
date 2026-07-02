@@ -1,15 +1,16 @@
-import { BrowserRouter, Route, Routes } from "react-router";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Routes } from "react-router"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import BarraNavegacion from "./components/navbar/BarraNavegacion";
-import ProtectorAdmin from "./components/routes/ProtectorAdmin";
+import ProtectorAdmin from "./components/routes/ProtectorAdmin"
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
-import SobreNosotros from "./pages/SobreNosotros";
 import Footer from "./components/footer/Footer"
 import Home from "./pages/HomePage";
 import { CartProvider } from './components/carrito/carrito.jsx';
+import SobreNosotros from "./pages/SobreNosotros.jsx";
+
 
 import HomePage from "./pages/HomePage";
 const App = () => {
@@ -24,12 +25,6 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
-        <BarraNavegacion></BarraNavegacion>
-
-        <main>
-          <Routes>
-            {/*       <Route path="/" element={<Home/>}/>
     <BrowserRouter>
     <CartProvider>
     <BarraNavegacion></BarraNavegacion>
@@ -37,6 +32,8 @@ const App = () => {
    <main>
     <Routes>
       <Route path="/" element={<HomePage/>}/>
+  <Route path="/sobrenosotros" element={<SobreNosotros />} />
+            
       
 {/*       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
@@ -50,19 +47,6 @@ const App = () => {
       <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
       </Route>
       <Route path="*" element={<Error404></Error404>}/> */}
-            <Route
-              path="sobreNosotros"
-              element={<SobreNosotros></SobreNosotros>}
-            />
-            <Route
-              path="/login"
-              element={<Login setUsuarioLogueado={setUsuarioLogueado} />}
-            />
-            <Route path="/registro" element={<Registro />} />
-          </Routes>
-        </main>
-        {/*    <Footer></Footer> */}
-      </BrowserRouter>
 
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
        <Route path="/registro" element={<Registro/>}/>
