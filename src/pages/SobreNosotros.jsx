@@ -78,7 +78,7 @@ const SobreNosotros = () => {
           </div>
         </div>
 
-        <hr className="container my-5" />
+        <hr className="container " />
 
         <div className="container pb-5">
           <div className="text-center mb-5">
