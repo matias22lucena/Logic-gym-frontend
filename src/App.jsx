@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer"
 import Home from "./pages/HomePage";
 import { CartProvider } from './components/carrito/carrito.jsx';
 import SobreNosotros from "./pages/SobreNosotros.jsx";
+import Contacto from "./pages/Contacto.jsx";
 
 
 import HomePage from "./pages/HomePage";
@@ -32,6 +33,7 @@ const App = () => {
    <main>
     <Routes>
       <Route path="/" element={<HomePage/>}/>
+      <Route path="/contacto" element={<Contacto/>}/>
   <Route path="/sobrenosotros" element={<SobreNosotros />} />
             
       
