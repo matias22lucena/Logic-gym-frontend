@@ -91,7 +91,7 @@ const Contacto = () => {
                     required: "El email es un dato obligatorio",
                     pattern: {
                         value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                        message: "El mail debe ser un correo valido por ej: juanperez@mail.com"
+                        message: "El email debe ser un correo valido por ej: juanperez@mail.com"
                     }
                   })} 
                 />

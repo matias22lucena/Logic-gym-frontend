@@ -50,9 +50,56 @@ const DetalleDePlan = () => {
     };
 
   return (
-    <div>
-      
-    </div>
+    <>
+    <Container className="DetalleDePlan-wrapper py-5">
+        <Row className="justify-content-center">
+            <Col xs={12} md={8} lg={6}>
+            <div className="tex-center mb-5">
+                <h1>¿que dudas tenes sobre nuestros planes?</h1>
+                <p>Completa este formulario para obtener mas informacion sobre nuestros planes.</p>
+            </div>
+            <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
+                <Form.Group className="mb-4" controlId="formNombre">
+                    <Form.Label className="DetallePlan-label">Nombre completo:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="ej Juan Perez"
+                        className="DetallePlan-input"
+                        {...register ("user_name", {
+                            required: "El nombre es un dato obligatorio",
+
+
+                        })}
+                    />
+                    <Form.Text className="text-danger">
+                        {errors.user_name?.message}
+                    </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="mb-4" controlId="formEmail">
+                    <Form.Label className="DetallePlan-label">Email:</Form.Label>
+                    <Form.Control
+                    type="email"
+                    placeholder="juaperez@mail.com"
+                    className="DetallePlan-input"
+                    {...register ("user_email", {
+                        required: "El email es un dato obligatorio",
+                        pattern: {
+                        value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                        message: "El email debe ser un correo valido por ej: juanperez@mail.com"
+                        }
+                    })}
+                    />
+                    <Form.Text className="text-danger">
+                        {errors.user_email?.message}
+                    </Form.Text>
+                </Form.Group>
+
+            </Form>
+            </Col>
+        </Row>
+    </Container> 
+    </>
   )
 }
 
