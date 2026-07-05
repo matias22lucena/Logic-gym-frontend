@@ -13,6 +13,8 @@ import HomePage from "./pages/HomePage";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
 import PanelUsuarios from "./pages/PanelUsuarios.jsx";
 import PanelAdministrador from "./pages/PanelAdministrador.jsx";
+import PanelClases from "./pages/PanelClases.jsx";
+
 
 const App = () => {
   const sesionUsuario =
@@ -62,6 +64,14 @@ const App = () => {
     </ProtectorAdmin>
   }
 /> 
+<Route
+  path="/administrador/clases"
+  element={
+    <ProtectorAdmin usuarioLogueado={usuarioLogueado}>
+      <PanelClases />
+    </ProtectorAdmin>
+  }
+/>
           </Routes>
         </main>
 
