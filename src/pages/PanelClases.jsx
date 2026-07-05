@@ -7,7 +7,6 @@ import {
   Form,
   Button,
   Table,
-  Spinner,
   Alert,
   Badge,
 } from "react-bootstrap";
@@ -16,7 +15,6 @@ import { crearClase, obtenerClases } from "../helpers/queriesClases";
 
 const PanelClases = () => {
   const [clases, setClases] = useState([]);
-  const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
 
   const [formClase, setFormClase] = useState({
@@ -29,7 +27,6 @@ const PanelClases = () => {
   const [errores, setErrores] = useState({});
 
   const cargarClases = async () => {
-    setCargando(true);
     setError("");
 
     const { ok, data } = await obtenerClases();
@@ -37,12 +34,10 @@ const PanelClases = () => {
     if (!ok) {
       setError("No se pudieron cargar las clases.");
       setClases([]);
-      setCargando(false);
       return;
     }
 
     setClases(data);
-    setCargando(false);
   };
 
   useEffect(() => {
@@ -124,8 +119,51 @@ const PanelClases = () => {
     });
 
     setErrores({});
-
     cargarClases();
+  };
+
+  const mostrarClases = () => {
+    if (error) {
+      return <Alert variant="danger">{error}</Alert>;
+    }
+
+    if (clases.length === 0) {
+      return <Alert variant="warning">No hay clases registradas.</Alert>;
+    }
+
+    return (
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Clase</th>
+            <th>Profesor/a</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {clases.map((clase, index) => (
+            <tr key={clase._id}>
+              <td>{index + 1}</td>
+              <td>{clase.detalleClase}</td>
+              <td>{clase.profesor}</td>
+              <td>{clase.fecha}</td>
+              <td>{clase.hora}</td>
+              <td>
+                {clase.activa ? (
+                  <Badge bg="success">Activa</Badge>
+                ) : (
+                  <Badge bg="secondary">Inactiva</Badge>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    );
   };
 
   return (
@@ -219,52 +257,7 @@ const PanelClases = () => {
             <Card.Body>
               <Card.Title>Clases registradas</Card.Title>
 
-              {cargando && (
-                <div className="text-center my-5">
-                  <Spinner animation="border" />
-                  <p className="mt-3">Cargando clases...</p>
-                </div>
-              )}
-
-              {!cargando && error && <Alert variant="danger">{error}</Alert>}
-
-              {!cargando && !error && clases.length === 0 && (
-                <Alert variant="warning">No hay clases registradas.</Alert>
-              )}
-
-              {!cargando && !error && clases.length > 0 && (
-                <Table striped bordered hover responsive>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Clase</th>
-                      <th>Profesor/a</th>
-                      <th>Fecha</th>
-                      <th>Hora</th>
-                      <th>Estado</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {clases.map((clase, index) => (
-                      <tr key={clase._id}>
-                        <td>{index + 1}</td>
-                        <td>{clase.detalleClase}</td>
-                        <td>{clase.profesor}</td>
-                        <td>{clase.fecha}</td>
-                        <td>{clase.hora}</td>
-                        <td>
-                          {clase.activa ? (
-                            <Badge bg="success">Activa</Badge>
-                          ) : (
-                            <Badge bg="secondary">Inactiva</Badge>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              )}
+              {mostrarClases()}
             </Card.Body>
           </Card>
         </Col>
