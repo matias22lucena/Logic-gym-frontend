@@ -10,6 +10,8 @@ import { CartProvider } from "./components/carrito/carrito.jsx";
 import SobreNosotros from "./pages/SobreNosotros.jsx";
 import Contacto from "./pages/Contacto.jsx";
 import HomePage from "./pages/HomePage";
+import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
+import Administrador from "./pages/Administrador.jsx";
 
 const App = () => {
   const sesionUsuario =
@@ -41,6 +43,24 @@ const App = () => {
             />
 
             <Route path="/registro" element={<Registro />} />
+
+<Route
+  path="/administrador"
+  element={
+    <ProtectorAdmin usuarioLogueado={usuarioLogueado}>
+      <Administrador />
+    </ProtectorAdmin>
+  }
+/>
+
+<Route
+  path="/administrador/usuarios"
+  element={
+    <ProtectorAdmin usuarioLogueado={usuarioLogueado}>
+      <Administrador />
+    </ProtectorAdmin>
+  }
+/> 
           </Routes>
         </main>
 
