@@ -11,7 +11,8 @@ import SobreNosotros from "./pages/SobreNosotros.jsx";
 import Contacto from "./pages/Contacto.jsx";
 import HomePage from "./pages/HomePage";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
-import Administrador from "./pages/Administrador.jsx";
+import PanelUsuarios from "./pages/PanelUsuarios.jsx";
+import PanelAdministrador from "./pages/PanelAdministrador.jsx";
 
 const App = () => {
   const sesionUsuario =
@@ -48,7 +49,7 @@ const App = () => {
   path="/administrador"
   element={
     <ProtectorAdmin usuarioLogueado={usuarioLogueado}>
-      <Administrador />
+      <PanelAdministrador/>
     </ProtectorAdmin>
   }
 />
@@ -57,7 +58,7 @@ const App = () => {
   path="/administrador/usuarios"
   element={
     <ProtectorAdmin usuarioLogueado={usuarioLogueado}>
-      <Administrador />
+      <PanelUsuarios/>
     </ProtectorAdmin>
   }
 /> 
