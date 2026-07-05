@@ -10,6 +10,7 @@ import { CartProvider } from "./components/carrito/carrito.jsx";
 import SobreNosotros from "./pages/SobreNosotros.jsx";
 import Contacto from "./pages/Contacto.jsx";
 import HomePage from "./pages/HomePage";
+import DetalleDePlan from "./components/detalleDePlan/DetalleDePlan.jsx";
 
 const App = () => {
   const sesionUsuario =
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/sobrenosotros" element={<SobreNosotros />} />
+            <Route path="/detalle" elemen={<DetalleDePlan/> } />
 
             <Route
               path="/login"

@@ -17,7 +17,7 @@ const DetalleDePlan = () => {
 
 
     const onSubmit = (data) => {
-        console.log("Datos que van a EmailJS:", data)
+        
 
     emailjs.send(
       'service_jrhz7v4', 
@@ -54,7 +54,7 @@ const DetalleDePlan = () => {
     <Container className="DetalleDePlan-wrapper py-5">
         <Row className="justify-content-center">
             <Col xs={12} md={8} lg={6}>
-            <div className="tex-center mb-5">
+            <div className="text-center mb-5">
                 <h1>¿que dudas tenes sobre nuestros planes?</h1>
                 <p>Completa este formulario para obtener mas informacion sobre nuestros planes.</p>
             </div>
@@ -67,8 +67,6 @@ const DetalleDePlan = () => {
                         className="DetallePlan-input"
                         {...register ("user_name", {
                             required: "El nombre es un dato obligatorio",
-
-
                         })}
                     />
                     <Form.Text className="text-danger">
@@ -95,6 +93,28 @@ const DetalleDePlan = () => {
                     </Form.Text>
                 </Form.Group>
 
+                <Form.Group className="mb-4" controlId="formTelefono">
+                    <Form.Label className="DetallePlan-label">Teléfono:</Form.Label>
+                    <Form.Control
+                    type="tel"
+                    placeholder="Ej: 3811234567"
+                    className="DetallePlan-input"
+                    {...register("user_phone", {
+                        required: "El teléfono es un dato obligatorio",
+                        pattern: {
+                        value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
+                        message: "El teléfono debe contener entre 10 y 14 números (sin espacios ni guiones)"
+                       }
+                    })}
+                    />
+                   <Form.Text className="text-danger fw-bold">
+                      {errors.user_phone?.message}
+                   </Form.Text>
+                </Form.Group>
+
+                <Button type="submit" className="DetallePlan-btn w-100 mt-2">
+                   ENVIAR FORMULARIO
+                </Button>
             </Form>
             </Col>
         </Row>

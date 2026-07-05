@@ -19,7 +19,7 @@ const Contacto = () => {
 
 
     const onSubmit = (data) => {
-        console.log("Datos que van a EmailJS:", data)
+       
 
     emailjs.send(
       'service_jrhz7v4', 
