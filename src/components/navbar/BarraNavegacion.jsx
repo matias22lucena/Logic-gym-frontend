@@ -39,24 +39,24 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </Nav.Link>
 
             {usuarioLogueado?.rolUsuario === "admin" && (
-              <NavDropdown
-                title="Admin"
-                id="admin-dropdown"
-                className="custom-link"
-              >
-                <NavDropdown.Item as={NavLink} to="/administrador">
-                  Panel
-                </NavDropdown.Item>
+  <NavDropdown
+    title="Admin"
+    id="admin-dropdown"
+    className="custom-link"
+  >
+    <NavDropdown.Item as={NavLink} to="/administrador">
+      Panel
+    </NavDropdown.Item>
 
-                <NavDropdown.Item as={NavLink} to="/administrador/usuarios">
-                  Usuarios
-                </NavDropdown.Item>
+    <NavDropdown.Item as={NavLink} to="/administrador/usuarios">
+      Usuarios
+    </NavDropdown.Item>
 
-                <NavDropdown.Item as={NavLink} to="/administrador/clases">
-                  Clases
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
+    <NavDropdown.Item as={NavLink} to="/administrador/clases">
+      Clases
+    </NavDropdown.Item>
+  </NavDropdown>
+)}
 
             {usuarioLogueado?.rolUsuario === "usuario" && (
               <Nav.Link as={NavLink} to="/mis-reservas" className="custom-link">
