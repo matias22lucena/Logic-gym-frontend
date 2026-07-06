@@ -26,10 +26,6 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
               Inicio
             </Nav.Link>
 
-            <Nav.Link as={NavLink} to="/planes" className="custom-link">
-              Planes
-            </Nav.Link>
-
             <Nav.Link as={NavLink} to="/contacto" className="custom-link">
               Contacto
             </Nav.Link>
