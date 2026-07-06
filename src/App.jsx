@@ -14,6 +14,8 @@ import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
 import PanelUsuarios from "./pages/PanelUsuarios.jsx";
 import PanelAdministrador from "./pages/PanelAdministrador.jsx";
 import PanelClases from "./pages/PanelClases.jsx";
+import VistaUsuario from "./pages/VistaUsuario.jsx";
+
 
 
 const App = () => {
