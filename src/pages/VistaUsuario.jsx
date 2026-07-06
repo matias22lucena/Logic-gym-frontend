@@ -68,3 +68,67 @@ const VistaUsuario = ({ usuarioLogueado }) => {
 
     inicializarVistaUsuario();
   }, [usuarioLogueado]);
+
+  const traerClases = async () => {
+    try {
+      const res = await obtenerClasesDisponibles();
+      if (res.ok) {
+        setClases(res.data);
+      }
+    } catch (error) {
+      console.error("Error al traer clases:", error);
+    }
+  };
+
+  const handleReservar = async (claseId, detalleClase) => {
+    if (!user) {
+      Swal.fire({
+        title: "Iniciar sesión requerido",
+        text: "Debes iniciar sesión para reservar una clase.",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#0766ff",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Iniciar sesión",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+      return;
+    }
+
+    // Se comenta esta restricción para que cualquier usuario registrado (incluso con "sin plan" por defecto) pueda reservar clases directamente sin la intervención del administrador.
+    /*
+    if (user.plan === "Ninguno" || user.plan === "sin plan") {
+      Swal.fire("Acceso Denegado", "Necesitás un plan activo para reservar.", "warning");
+      return;
+    }
+    */
+
+    Swal.fire({
+      title: "¿Reservar lugar?",
+      text: `¿Te anotás en la clase de ${detalleClase}?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Sí, reservar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#0766ff",
+      cancelButtonColor: "#d33"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await crearReservaMongo(claseId, user._id);
+          if (res.ok) {
+            Swal.fire("¡Listo!", res.mensaje || "Tu turno fue reservado con éxito.", "success");
+            traerClases(); // Recarga
+          } else {
+            Swal.fire("Error", res.mensaje || "No se pudo realizar la reserva.", "error");
+          }
+        } catch (error) {
+          Swal.fire("Error", "No se pudo procesar la reserva.", "error");
+        }
+      }
+    });
+  };
