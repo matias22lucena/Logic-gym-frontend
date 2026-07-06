@@ -18,6 +18,8 @@ import {
   eliminarClase,
 } from "../helpers/queriesClases";
 
+import "./PanelClases.css";
+
 const PanelClases = () => {
   const [clases, setClases] = useState([]);
   const [error, setError] = useState("");
@@ -30,8 +32,6 @@ const PanelClases = () => {
   });
 
   const [errores, setErrores] = useState({});
-
-
   const [idClaseEditar, setIdClaseEditar] = useState(null);
 
   const cargarClases = async () => {
@@ -114,8 +114,6 @@ const PanelClases = () => {
       hora: formClase.hora,
     };
 
-    // Si hay idClaseEditar, editamos.
-    // Si no hay idClaseEditar, creamos.
     if (idClaseEditar) {
       const { ok, data } = await editarClase(idClaseEditar, datosClase);
 
@@ -179,6 +177,8 @@ const PanelClases = () => {
       text: "Esta acción no se puede deshacer.",
       icon: "warning",
       showCancelButton: true,
+      confirmButtonColor: "#0d6efd",
+      cancelButtonColor: "#6c757d",
       confirmButtonText: "Sí, eliminar",
       cancelButtonText: "Cancelar",
     });
@@ -211,178 +211,197 @@ const PanelClases = () => {
 
   const mostrarClases = () => {
     if (error) {
-      return <Alert variant="danger">{error}</Alert>;
+      return (
+        <Alert variant="danger" className="panel-clases-alert">
+          {error}
+        </Alert>
+      );
     }
 
     if (clases.length === 0) {
-      return <Alert variant="warning">No hay clases registradas.</Alert>;
+      return (
+        <Alert variant="warning" className="panel-clases-alert">
+          No hay clases registradas.
+        </Alert>
+      );
     }
 
     return (
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Clase</th>
-            <th>Profesor/a</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {clases.map((clase, index) => (
-            <tr key={clase._id}>
-              <td>{index + 1}</td>
-              <td>{clase.detalleClase}</td>
-              <td>{clase.profesor}</td>
-              <td>{clase.fecha}</td>
-              <td>{clase.hora}</td>
-
-              <td>
-                {clase.activa ? (
-                  <Badge bg="success">Activa</Badge>
-                ) : (
-                  <Badge bg="secondary">Inactiva</Badge>
-                )}
-              </td>
-
-              <td>
-                <Button
-                  variant="warning"
-                  size="sm"
-                  className="me-2"
-                  onClick={() => handleEditarClase(clase)}
-                >
-                  Editar
-                </Button>
-
-                <Button
-                  variant="danger"
-                  size="sm"
-                  onClick={() => handleEliminarClase(clase._id)}
-                >
-                  Eliminar
-                </Button>
-              </td>
+      <div className="panel-clases-table-wrapper">
+        <Table responsive className="panel-clases-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Clase</th>
+              <th>Profesor/a</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+
+          <tbody>
+            {clases.map((clase, index) => (
+              <tr key={clase._id}>
+                <td>{index + 1}</td>
+                <td>{clase.detalleClase}</td>
+                <td>{clase.profesor}</td>
+                <td>{clase.fecha}</td>
+                <td>{clase.hora}</td>
+
+                <td>
+                  {clase.activa ? (
+                    <Badge bg="success">Activa</Badge>
+                  ) : (
+                    <Badge bg="secondary">Inactiva</Badge>
+                  )}
+                </td>
+
+                <td>
+                  <Button
+                    size="sm"
+                    className="me-2 panel-clases-edit-btn"
+                    onClick={() => handleEditarClase(clase)}
+                  >
+                    Editar
+                  </Button>
+
+                  <Button
+                    size="sm"
+                    className="panel-clases-delete-btn"
+                    onClick={() => handleEliminarClase(clase._id)}
+                  >
+                    Eliminar
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     );
   };
 
   return (
-    <Container className="my-5">
-      <h1 className="mb-3">Administrar clases</h1>
+    <section className="panel-clases-page">
+      <Container>
+        <div className="panel-clases-header">
+          <p className="panel-clases-label">Panel administrador</p>
 
-      <p className="mb-4">
-        Desde esta sección podés crear, editar, eliminar y visualizar las clases
-        disponibles del gimnasio.
-      </p>
+          <h1 className="panel-clases-title">Administrar clases</h1>
 
-      <Row className="g-4">
-        <Col lg={4}>
-          <Card className="shadow">
-            <Card.Body>
-              <Card.Title>
-                {idClaseEditar ? "Editar clase" : "Crear nueva clase"}
-              </Card.Title>
+          <p className="panel-clases-text">
+            Desde esta sección podés crear, editar, eliminar y visualizar las
+            clases disponibles del gimnasio.
+          </p>
+        </div>
 
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Detalle de la clase</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="detalleClase"
-                    placeholder="Ej: Funcional, Spinning, Yoga"
-                    value={formClase.detalleClase}
-                    onChange={handleChange}
-                    isInvalid={!!errores.detalleClase}
-                  />
+        <Row className="g-4">
+          <Col lg={4}>
+            <Card className="panel-clases-card">
+              <Card.Body>
+                <Card.Title className="panel-clases-card-title">
+                  {idClaseEditar ? "Editar clase" : "Crear nueva clase"}
+                </Card.Title>
 
-                  <Form.Control.Feedback type="invalid">
-                    {errores.detalleClase}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                <p className="panel-clases-card-subtitle">Datos de la clase</p>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Profesor/a</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="profesor"
-                    placeholder="Nombre del profesor"
-                    value={formClase.profesor}
-                    onChange={handleChange}
-                    isInvalid={!!errores.profesor}
-                  />
+                <Form onSubmit={handleSubmit} className="panel-clases-form">
+                  <Form.Group className="mb-3">
+                    <Form.Label>Detalle de la clase</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="detalleClase"
+                      placeholder="Ej: Funcional, Spinning, Yoga"
+                      value={formClase.detalleClase}
+                      onChange={handleChange}
+                      isInvalid={!!errores.detalleClase}
+                    />
 
-                  <Form.Control.Feedback type="invalid">
-                    {errores.profesor}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                    <Form.Control.Feedback type="invalid">
+                      {errores.detalleClase}
+                    </Form.Control.Feedback>
+                  </Form.Group>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Fecha</Form.Label>
-                  <Form.Control
-                    type="date"
-                    name="fecha"
-                    value={formClase.fecha}
-                    onChange={handleChange}
-                    isInvalid={!!errores.fecha}
-                  />
+                  <Form.Group className="mb-3">
+                    <Form.Label>Profesor/a</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="profesor"
+                      placeholder="Nombre del profesor"
+                      value={formClase.profesor}
+                      onChange={handleChange}
+                      isInvalid={!!errores.profesor}
+                    />
 
-                  <Form.Control.Feedback type="invalid">
-                    {errores.fecha}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                    <Form.Control.Feedback type="invalid">
+                      {errores.profesor}
+                    </Form.Control.Feedback>
+                  </Form.Group>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Hora</Form.Label>
-                  <Form.Control
-                    type="time"
-                    name="hora"
-                    value={formClase.hora}
-                    onChange={handleChange}
-                    isInvalid={!!errores.hora}
-                  />
+                  <Form.Group className="mb-3">
+                    <Form.Label>Fecha</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="fecha"
+                      value={formClase.fecha}
+                      onChange={handleChange}
+                      isInvalid={!!errores.fecha}
+                    />
 
-                  <Form.Control.Feedback type="invalid">
-                    {errores.hora}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                    <Form.Control.Feedback type="invalid">
+                      {errores.fecha}
+                    </Form.Control.Feedback>
+                  </Form.Group>
 
-                <Button type="submit" variant="dark" className="w-100">
-                  {idClaseEditar ? "Guardar cambios" : "Crear clase"}
-                </Button>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Hora</Form.Label>
+                    <Form.Control
+                      type="time"
+                      name="hora"
+                      value={formClase.hora}
+                      onChange={handleChange}
+                      isInvalid={!!errores.hora}
+                    />
 
-                {idClaseEditar && (
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    className="w-100 mt-2"
-                    onClick={limpiarFormulario}
-                  >
-                    Cancelar edición
+                    <Form.Control.Feedback type="invalid">
+                      {errores.hora}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Button type="submit" className="w-100 panel-clases-main-btn">
+                    {idClaseEditar ? "Guardar cambios" : "Crear clase"}
                   </Button>
-                )}
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
 
-        <Col lg={8}>
-          <Card className="shadow">
-            <Card.Body>
-              <Card.Title>Clases registradas</Card.Title>
-              {mostrarClases()}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                  {idClaseEditar && (
+                    <Button
+                      type="button"
+                      className="w-100 mt-2 panel-clases-cancel-btn"
+                      onClick={limpiarFormulario}
+                    >
+                      Cancelar edición
+                    </Button>
+                  )}
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col lg={8}>
+            <Card className="panel-clases-card">
+              <Card.Body>
+                <Card.Title className="panel-clases-card-title">
+                  Clases registradas
+                </Card.Title>
+
+                {mostrarClases()}
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
 
