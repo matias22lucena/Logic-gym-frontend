@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Racing+Sans+One&display=swap');
 
-
 .custom-navbar {
     background-color: transparent;
     padding-top: 1rem;
@@ -8,50 +7,173 @@
 }
 
 .logo-text {
-    color: #ffffff;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-size: 1.5rem;
+  color: #ffffff !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.logo-text:hover {
+  color: #0466c8 !important;
 }
 
 .navbar-toggler {
-    background-color: #0466c8;
+  background-color: #0466c8;
+  border: none;
 }
 
 .custom-link {
-    color: #0466c8;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-size: 1.5rem;
-    position: relative;
-    padding-bottom: 0.3rem;
-    transition: all 0.3s ease-in-out;
+  color: #0466c8 !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 0.3rem;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
 }
 
 .custom-link:hover {
-    color: #ffffff
+  color: #ffffff !important;
 }
 
 .custom-link.active {
-    color: #ffffff;
-    text-shadow: #ffffff;
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.65);
 }
 
 .custom-link.active::after {
-    content: '';
-    position: absolute;
-    left: 0.3rem;
-    right: 0,3rem;
-    bottom: 0;
-    height: 2px;
-    background-color: #ffffff;
-    box-shadow: #ffffff;
+  content: '';
+  position: absolute;
+  left: 0.3rem;
+  right: 0.3rem;
+  bottom: 0;
+  height: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .custom-link.active,
 .custom-link.active:focus,
 .custom-link.active:visited,
 .custom-link.active:active {
-    color: #ffffff;
-    text-shadow:#ffffff;
+  color: #ffffff !important;
+}
+
+/* ADMIN DROPDOWN */
+
+.admin-dropdown .dropdown-toggle {
+  color: #0466c8 !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 0.3rem;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.admin-dropdown .dropdown-toggle:hover,
+.admin-dropdown .dropdown-toggle:focus,
+.admin-dropdown .dropdown-toggle:active,
+.admin-dropdown.show .dropdown-toggle {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+.admin-dropdown .dropdown-toggle::after {
+  margin-left: 0.45rem;
+}
+
+.admin-dropdown .dropdown-menu {
+  background-color: #0d111a;
+  border: 1px solid rgba(4, 102, 200, 0.45);
+  border-radius: 4px;
+  padding: 0.4rem 0;
+  margin-top: 0.7rem;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+}
+
+.admin-dropdown .dropdown-item {
+  color: #0466c8 !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 0.55rem 1.2rem;
+  transition: all 0.25s ease;
+}
+
+.admin-dropdown .dropdown-item:hover,
+.admin-dropdown .dropdown-item:focus {
+  background-color: #0466c8 !important;
+  color: #ffffff !important;
+}
+
+.admin-dropdown .dropdown-item.active {
+  background-color: #0466c8 !important;
+  color: #ffffff !important;
+}
+
+/* NOMBRE DEL USUARIO */
+
+.navbar-user-name {
+  color: #0466c8;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-user-name:hover {
+  color: #ffffff;
+}
+
+/* BOTÓN LOGOUT */
+
+.logout-btn {
+  background-color: #0466c8 !important;
+  border: 1px solid #0466c8 !important;
+  color: #ffffff !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2rem !important;
+  font-weight: 400;
+  padding: 0.35rem 1rem !important;
+  border-radius: 4px !important;
+  transition: all 0.25s ease;
+}
+
+.logout-btn:hover,
+.logout-btn:focus,
+.logout-btn:active {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #0466c8 !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.92);
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(4, 102, 200, 0.35);
+  }
+
+  .custom-link,
+  .admin-dropdown .dropdown-toggle,
+  .navbar-user-name {
+    font-size: 1.4rem;
+  }
+
+  .admin-dropdown .dropdown-menu {
+    background-color: #0d111a;
+    border: 1px solid rgba(4, 102, 200, 0.35);
+    margin-top: 0.3rem;
+  }
+
+  .logout-btn {
+    width: 100%;
+  }
 }
