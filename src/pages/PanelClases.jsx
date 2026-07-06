@@ -141,6 +141,7 @@ const PanelClases = () => {
             <th>Fecha</th>
             <th>Hora</th>
             <th>Estado</th>
+            <th>Acciones</th>
           </tr>
         </thead>
 
@@ -152,6 +153,7 @@ const PanelClases = () => {
               <td>{clase.profesor}</td>
               <td>{clase.fecha}</td>
               <td>{clase.hora}</td>
+              
               <td>
                 {clase.activa ? (
                   <Badge bg="success">Activa</Badge>
@@ -159,6 +161,11 @@ const PanelClases = () => {
                   <Badge bg="secondary">Inactiva</Badge>
                 )}
               </td>
+              <td>
+              <Button variant="danger" size="sm">
+                Eliminar
+              </Button>
+            </td>
             </tr>
           ))}
         </tbody>
