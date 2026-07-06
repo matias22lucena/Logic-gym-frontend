@@ -11,7 +11,12 @@ import {
   Badge,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { crearClase, obtenerClases } from "../helpers/queriesClases";
+import {
+  crearClase,
+  obtenerClases,
+  editarClase,
+  eliminarClase,
+} from "../helpers/queriesClases";
 
 const PanelClases = () => {
   const [clases, setClases] = useState([]);
@@ -25,6 +30,9 @@ const PanelClases = () => {
   });
 
   const [errores, setErrores] = useState({});
+
+
+  const [idClaseEditar, setIdClaseEditar] = useState(null);
 
   const cargarClases = async () => {
     setError("");
@@ -82,19 +90,56 @@ const PanelClases = () => {
     return Object.keys(nuevosErrores).length === 0;
   };
 
+  const limpiarFormulario = () => {
+    setFormClase({
+      detalleClase: "",
+      profesor: "",
+      fecha: "",
+      hora: "",
+    });
+
+    setErrores({});
+    setIdClaseEditar(null);
+  };
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
 
     if (!validarFormulario()) return;
 
-    const claseNueva = {
+    const datosClase = {
       detalleClase: formClase.detalleClase.trim(),
       profesor: formClase.profesor.trim(),
       fecha: formClase.fecha,
       hora: formClase.hora,
     };
 
-    const { ok, data } = await crearClase(claseNueva);
+    // Si hay idClaseEditar, editamos.
+    // Si no hay idClaseEditar, creamos.
+    if (idClaseEditar) {
+      const { ok, data } = await editarClase(idClaseEditar, datosClase);
+
+      if (!ok) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: data.mensaje || "No se pudo editar la clase",
+        });
+        return;
+      }
+
+      Swal.fire({
+        icon: "success",
+        title: "Clase editada",
+        text: "La clase fue editada correctamente",
+      });
+
+      limpiarFormulario();
+      cargarClases();
+      return;
+    }
+
+    const { ok, data } = await crearClase(datosClase);
 
     if (!ok) {
       Swal.fire({
@@ -111,15 +156,57 @@ const PanelClases = () => {
       text: "La clase fue creada correctamente",
     });
 
+    limpiarFormulario();
+    cargarClases();
+  };
+
+  const handleEditarClase = (clase) => {
+    setIdClaseEditar(clase._id);
+
     setFormClase({
-      detalleClase: "",
-      profesor: "",
-      fecha: "",
-      hora: "",
+      detalleClase: clase.detalleClase,
+      profesor: clase.profesor,
+      fecha: clase.fecha,
+      hora: clase.hora,
     });
 
     setErrores({});
+  };
+
+  const handleEliminarClase = async (id) => {
+    const confirmacion = await Swal.fire({
+      title: "¿Eliminar clase?",
+      text: "Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (!confirmacion.isConfirmed) return;
+
+    const { ok, data } = await eliminarClase(id);
+
+    if (!ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.mensaje || "No se pudo eliminar la clase",
+      });
+      return;
+    }
+
+    Swal.fire({
+      icon: "success",
+      title: "Clase eliminada",
+      text: data.mensaje || "La clase fue eliminada correctamente",
+    });
+
     cargarClases();
+
+    if (idClaseEditar === id) {
+      limpiarFormulario();
+    }
   };
 
   const mostrarClases = () => {
@@ -141,6 +228,7 @@ const PanelClases = () => {
             <th>Fecha</th>
             <th>Hora</th>
             <th>Estado</th>
+            <th>Acciones</th>
           </tr>
         </thead>
 
@@ -152,12 +240,32 @@ const PanelClases = () => {
               <td>{clase.profesor}</td>
               <td>{clase.fecha}</td>
               <td>{clase.hora}</td>
+
               <td>
                 {clase.activa ? (
                   <Badge bg="success">Activa</Badge>
                 ) : (
                   <Badge bg="secondary">Inactiva</Badge>
                 )}
+              </td>
+
+              <td>
+                <Button
+                  variant="warning"
+                  size="sm"
+                  className="me-2"
+                  onClick={() => handleEditarClase(clase)}
+                >
+                  Editar
+                </Button>
+
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleEliminarClase(clase._id)}
+                >
+                  Eliminar
+                </Button>
               </td>
             </tr>
           ))}
@@ -171,15 +279,17 @@ const PanelClases = () => {
       <h1 className="mb-3">Administrar clases</h1>
 
       <p className="mb-4">
-        Desde esta sección podés crear y visualizar las clases disponibles del
-        gimnasio.
+        Desde esta sección podés crear, editar, eliminar y visualizar las clases
+        disponibles del gimnasio.
       </p>
 
       <Row className="g-4">
         <Col lg={4}>
           <Card className="shadow">
             <Card.Body>
-              <Card.Title>Crear nueva clase</Card.Title>
+              <Card.Title>
+                {idClaseEditar ? "Editar clase" : "Crear nueva clase"}
+              </Card.Title>
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
@@ -245,8 +355,19 @@ const PanelClases = () => {
                 </Form.Group>
 
                 <Button type="submit" variant="dark" className="w-100">
-                  Crear clase
+                  {idClaseEditar ? "Guardar cambios" : "Crear clase"}
                 </Button>
+
+                {idClaseEditar && (
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className="w-100 mt-2"
+                    onClick={limpiarFormulario}
+                  >
+                    Cancelar edición
+                  </Button>
+                )}
               </Form>
             </Card.Body>
           </Card>
@@ -256,7 +377,6 @@ const PanelClases = () => {
           <Card className="shadow">
             <Card.Body>
               <Card.Title>Clases registradas</Card.Title>
-
               {mostrarClases()}
             </Card.Body>
           </Card>
