@@ -1,0 +1,27 @@
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper .input-auth {
+  padding-right: 70px !important;
+}
+
+.icono-password {
+  position: absolute;
+  right: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 6;
+  font-size: 1.5rem;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icono-password:hover {
+  opacity: 1;
+  color: #2979ff;
+}
