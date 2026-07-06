@@ -74,6 +74,10 @@ const App = () => {
     </ProtectorAdmin>
   }
 />
+<Route
+  path="/mis-reservas"
+  element={<VistaUsuario usuarioLogueado={usuarioLogueado} />}
+/>
           </Routes>
         </main>
 
