@@ -11,9 +11,15 @@ import {
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
+// Importamos las funciones del helper y dejamos de usar fetch directamente en este componente.
+import {
+  registrarUsuario,
+  loginUsuario,
+} from "../../helpers/queriesUsuarios";
 
 const Formulario = ({ idPage, setUsuarioLogueado }) => {
-  const URL_USUARIOS = "http://localhost:3000/api/usuarios";
+
+
 
   const navegacion = useNavigate();
 
@@ -23,6 +29,14 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
     useState(false);
 
   const [formulario, setFormulario] = useState({
+
+    /*
+    nombre: "",
+    apellido: "",
+    telefono: "",
+    planContratado: "sin plan",
+    */
+
     nombreUsuario: "",
     correoUsuario: "",
     contrasenia: "",
@@ -42,16 +56,10 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
 
   const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-/*   const getClass = (error, value) => {
-    if (error) return "is-invalid";
-    if (value) return "is-valid";
-    return "";
-  }; */
-
   const getClass = (error) => {
-  if (error) return "is-invalid";
-  return "";
-};
+    if (error) return "is-invalid";
+    return "";
+  };
 
   const handleChangeRegister = (ev) => {
     const { name, value, type, checked } = ev.target;
@@ -87,6 +95,21 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
 
     let errores = {};
 
+ 
+    /*
+    if (!formulario.nombre.trim()) {
+      errores.nombre = "Campo obligatorio";
+    }
+
+    if (!formulario.apellido.trim()) {
+      errores.apellido = "Campo obligatorio";
+    }
+
+    if (!formulario.telefono.trim()) {
+      errores.telefono = "Campo obligatorio";
+    }
+    */
+
     if (!formulario.nombreUsuario.trim()) {
       errores.nombreUsuario = "Campo obligatorio";
     }
@@ -119,6 +142,14 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
 
     try {
       const usuarioNuevo = {
+   
+        /*
+        nombre: formulario.nombre.trim(),
+        apellido: formulario.apellido.trim(),
+        telefono: formulario.telefono.trim(),
+        planContratado: formulario.planContratado,
+        */
+
         nombreUsuario: formulario.nombreUsuario.trim(),
         correoUsuario: formulario.correoUsuario.trim().toLowerCase(),
         contrasenia: formulario.contrasenia,
@@ -126,17 +157,10 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
         bloqueo: formulario.bloqueo,
       };
 
-      const respuesta = await fetch(`${URL_USUARIOS}/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(usuarioNuevo),
-      });
 
-      const data = await respuesta.json();
+      const { ok, data } = await registrarUsuario(usuarioNuevo);
 
-      if (!respuesta.ok) {
+      if (!ok) {
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -152,6 +176,14 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
       });
 
       setFormulario({
+      
+        /*
+        nombre: "",
+        apellido: "",
+        telefono: "",
+        planContratado: "sin plan",
+        */
+
         nombreUsuario: "",
         correoUsuario: "",
         contrasenia: "",
@@ -194,20 +226,14 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
     if (Object.keys(errores).length > 0) return;
 
     try {
-      const respuesta = await fetch(`${URL_USUARIOS}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombreUsuario: formLog.nombreUsuario.trim(),
-          contrasenia: formLog.contrasenia,
-        }),
+     
+      // Reemplazamos el fetch directo por la función loginUsuario().
+      const { ok, data } = await loginUsuario({
+        nombreUsuario: formLog.nombreUsuario.trim(),
+        contrasenia: formLog.contrasenia,
       });
 
-      const data = await respuesta.json();
-
-      if (!respuesta.ok) {
+      if (!ok) {
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -225,11 +251,12 @@ const Formulario = ({ idPage, setUsuarioLogueado }) => {
         return;
       }
 
- sessionStorage.setItem("usuarioKey", JSON.stringify(data.usuario));
+      sessionStorage.setItem("usuarioKey", JSON.stringify(data.usuario));
 
-if (setUsuarioLogueado) {
-  setUsuarioLogueado(data.usuario);
-}
+      if (setUsuarioLogueado) {
+        setUsuarioLogueado(data.usuario);
+      }
+
       setFormLog({
         nombreUsuario: "",
         contrasenia: "",
@@ -243,12 +270,12 @@ if (setUsuarioLogueado) {
         icon: "success",
       });
 
-  if (data.usuario.rolUsuario === "admin") {
-  navegacion("/administrador");
-} else {
-  navegacion("/");
-}
-    } catch (error) { 
+      if (data.usuario.rolUsuario === "admin") {
+        navegacion("/administrador");
+      } else {
+        navegacion("/");
+      }
+    } catch (error) {
       console.error(error);
 
       Swal.fire({
@@ -279,8 +306,7 @@ if (setUsuarioLogueado) {
                     value={formLog.nombreUsuario}
                     onChange={handleChangeLogin}
                     className={`bg-dark text-light border-light input-auth ${getClass(
-                      erroresLogin.nombreUsuario,
-                      formLog.nombreUsuario
+                      erroresLogin.nombreUsuario
                     )}`}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -297,8 +323,7 @@ if (setUsuarioLogueado) {
                     value={formLog.contrasenia}
                     onChange={handleChangeLogin}
                     className={`bg-dark text-light border-light pe-5 input-auth ${getClass(
-                      erroresLogin.contrasenia,
-                      formLog.contrasenia
+                      erroresLogin.contrasenia
                     )}`}
                   />
 
@@ -341,6 +366,48 @@ if (setUsuarioLogueado) {
               <p className="text-center fw-bold mb-4">Crea tu cuenta</p>
 
               <Form onSubmit={handleClickBottomRegister}>
+                {/*
+                  CAMPOS COMENTADOS TEMPORALMENTE:
+                  Estos campos pertenecen al modelo completo de usuario.
+                  Se pueden volver a activar más adelante.
+                */}
+
+                {/*
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold">Nombre:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="nombre"
+                    placeholder="Ingresa tu nombre"
+                    value={formulario.nombre}
+                    onChange={handleChangeRegister}
+                    className={`bg-dark text-light border-light input-auth ${getClass(
+                      erroresRegister.nombre
+                    )}`}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {erroresRegister.nombre}
+                  </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold">Apellido:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="apellido"
+                    placeholder="Ingresa tu apellido"
+                    value={formulario.apellido}
+                    onChange={handleChangeRegister}
+                    className={`bg-dark text-light border-light input-auth ${getClass(
+                      erroresRegister.apellido
+                    )}`}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {erroresRegister.apellido}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                */}
+
                 <Form.Group className="mb-3">
                   <Form.Label className="fw-bold">Usuario:</Form.Label>
                   <Form.Control
@@ -350,8 +417,7 @@ if (setUsuarioLogueado) {
                     value={formulario.nombreUsuario}
                     onChange={handleChangeRegister}
                     className={`bg-dark text-light border-light input-auth ${getClass(
-                      erroresRegister.nombreUsuario,
-                      formulario.nombreUsuario
+                      erroresRegister.nombreUsuario
                     )}`}
                   />
                   <Form.Control.Feedback type="invalid">
@@ -368,14 +434,47 @@ if (setUsuarioLogueado) {
                     value={formulario.correoUsuario}
                     onChange={handleChangeRegister}
                     className={`bg-dark text-light border-light input-auth ${getClass(
-                      erroresRegister.correoUsuario,
-                      formulario.correoUsuario
+                      erroresRegister.correoUsuario
                     )}`}
                   />
                   <Form.Control.Feedback type="invalid">
                     {erroresRegister.correoUsuario}
                   </Form.Control.Feedback>
                 </Form.Group>
+
+                {/*
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold">Teléfono:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="telefono"
+                    placeholder="Ingresa tu teléfono"
+                    value={formulario.telefono}
+                    onChange={handleChangeRegister}
+                    className={`bg-dark text-light border-light input-auth ${getClass(
+                      erroresRegister.telefono
+                    )}`}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {erroresRegister.telefono}
+                  </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-bold">Plan contratado:</Form.Label>
+                  <Form.Select
+                    name="planContratado"
+                    value={formulario.planContratado}
+                    onChange={handleChangeRegister}
+                    className="bg-dark text-light border-light input-auth"
+                  >
+                    <option value="sin plan">Sin plan</option>
+                    <option value="musculacion">Musculación</option>
+                    <option value="clases">Clases</option>
+                    <option value="full">Full</option>
+                  </Form.Select>
+                </Form.Group>
+                */}
 
                 <Form.Group className="mb-3 position-relative">
                   <Form.Label className="fw-bold">Contraseña:</Form.Label>
@@ -386,8 +485,7 @@ if (setUsuarioLogueado) {
                     value={formulario.contrasenia}
                     onChange={handleChangeRegister}
                     className={`bg-dark text-light border-light pe-5 input-auth ${getClass(
-                      erroresRegister.contrasenia,
-                      formulario.contrasenia
+                      erroresRegister.contrasenia
                     )}`}
                   />
 
@@ -416,8 +514,7 @@ if (setUsuarioLogueado) {
                     value={formulario.repContrasenia}
                     onChange={handleChangeRegister}
                     className={`bg-dark text-light border-light pe-5 input-auth ${getClass(
-                      erroresRegister.repContrasenia,
-                      formulario.repContrasenia
+                      erroresRegister.repContrasenia
                     )}`}
                   />
 

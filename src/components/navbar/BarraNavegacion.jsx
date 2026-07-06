@@ -35,36 +35,24 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </Nav.Link>
 
             {usuarioLogueado?.rolUsuario === "admin" && (
-              <NavDropdown
-                title="Admin"
-                id="admin-dropdown"
-                className="admin-dropdown"
-              >
-                <NavDropdown.Item
-                  as={NavLink}
-                  to="/administrador"
-                  className="admin-dropdown-item"
-                >
-                  Panel
-                </NavDropdown.Item>
+  <NavDropdown
+    title="Admin"
+    id="admin-dropdown"
+    className="custom-link"
+  >
+    <NavDropdown.Item as={NavLink} to="/administrador">
+      Panel
+    </NavDropdown.Item>
 
-                <NavDropdown.Item
-                  as={NavLink}
-                  to="/administrador/usuarios"
-                  className="admin-dropdown-item"
-                >
-                  Usuarios
-                </NavDropdown.Item>
+    <NavDropdown.Item as={NavLink} to="/administrador/usuarios">
+      Usuarios
+    </NavDropdown.Item>
 
-                <NavDropdown.Item
-                  as={NavLink}
-                  to="/administrador/clases"
-                  className="admin-dropdown-item"
-                >
-                  Clases
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
+    <NavDropdown.Item as={NavLink} to="/administrador/clases">
+      Clases
+    </NavDropdown.Item>
+  </NavDropdown>
+)}
 
             {usuarioLogueado?.rolUsuario === "usuario" && (
               <Nav.Link as={NavLink} to="/mis-reservas" className="custom-link">
@@ -86,11 +74,11 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
 
             {usuarioLogueado && (
               <>
-                <span className="navbar-user-name">
+                <span className="custom-link">
                   {usuarioLogueado.nombreUsuario}
                 </span>
 
-                <Button className="logout-btn" onClick={logout}>
+                <Button variant="dark" onClick={logout}>
                   Logout
                 </Button>
               </>
