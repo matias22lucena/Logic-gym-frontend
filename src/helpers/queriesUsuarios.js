@@ -1,5 +1,3 @@
-
-
 const URL_USUARIOS = `${import.meta.env.VITE_API_URL}/usuarios`;
 
 export const registrarUsuario = async (usuarioNuevo) => {
@@ -74,6 +72,78 @@ export const obtenerUsuarios = async () => {
     return {
       ok: false,
       data: [],
+    };
+  }
+};
+
+export const obtenerUsuarioPorId = async (id) => {
+  try {
+    const respuesta = await fetch(`${URL_USUARIOS}/${id}`);
+
+    const data = await respuesta.json();
+
+    return {
+      ok: respuesta.ok,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      ok: false,
+      data: null,
+    };
+  }
+};
+
+export const editarUsuario = async (id, usuarioEditado) => {
+  try {
+    const respuesta = await fetch(`${URL_USUARIOS}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuarioEditado),
+    });
+
+    const data = await respuesta.json();
+
+    return {
+      ok: respuesta.ok,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      ok: false,
+      data: {
+        mensaje: "No se pudo actualizar el usuario",
+      },
+    };
+  }
+};
+
+export const eliminarUsuario = async (id) => {
+  try {
+    const respuesta = await fetch(`${URL_USUARIOS}/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await respuesta.json();
+
+    return {
+      ok: respuesta.ok,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      ok: false,
+      data: {
+        mensaje: "No se pudo eliminar el usuario",
+      },
     };
   }
 };
