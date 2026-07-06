@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import "./DetalleDePlan.css"
 
 const DetalleDePlan = () => {
     const form = useRef();
@@ -91,7 +92,7 @@ const DetalleDePlan = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formTelefono">
+                <Form.Group className="mb-4 " controlId="formTelefono">
                     <Form.Label className="DetallePlan-label">Teléfono:</Form.Label>
                     <Form.Control
                     type="tel"

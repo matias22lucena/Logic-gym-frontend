@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Racing+Sans+One&display=swap');
 
-/*contacto*/
-
 
 .contacto-wrapper {
     min-height: 80vh;
@@ -66,4 +64,87 @@
     border-color: #0466c8;
     color: #111111;
     box-shadow: 0 0 15 #0466c8;
+}
+
+
+.cinta-container {
+  overflow: hidden;
+  background: linear-gradient(135deg, #1565c03f 0%, #0d48a1 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  transform: rotate(-1.5deg) scale(1.05);
+  box-shadow: 0 6px 30px rgba(41, 121, 255, 0.25);
+  z-index: 10;
+}
+
+.cinta-container--full-width {
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+}
+
+.cinta-track {
+  display: flex;
+  white-space: nowrap;
+  gap: 20rem;
+  align-items: center;
+  animation: desplazar-cinta linear infinite;
+  will-change: transform;
+}
+
+.cinta-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.cinta-container:hover .cinta-track {
+  animation-play-state: paused;
+}
+
+.cinta-logo {
+  max-height: 95%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: 4px;
+}
+
+.cinta-logo:hover {
+  transform: scale(1.5);
+}
+.cinta-container--full-width {
+  width: 100vw;
+  left: 50%;
+  transform: rotate(-1.5deg) scale(1.05) translateX(-50%);
+  margin-left: 0;
+}
+
+@keyframes desplazar-cinta {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (min-width: 480px) {
+  .cinta-track {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .cinta-track {
+    gap: 5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cinta-track {
+    gap: 20rem;
+  }
 }

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import "./Contacto.css"
+import BannerInfinito from "../components/bannerInfinito/BannerInfinito";
 
 const Contacto = () => {
 
@@ -52,7 +53,7 @@ const Contacto = () => {
     };
 
   return (
-
+<>
     <Container className="contacto-wrapper py-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
@@ -132,7 +133,8 @@ const Contacto = () => {
         </Col>
       </Row>
     </Container>
-
+    <BannerInfinito className="my-4"></BannerInfinito>
+</>
   )
 }
 
