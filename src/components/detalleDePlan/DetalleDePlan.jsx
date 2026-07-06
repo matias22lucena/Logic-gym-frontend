@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import "./DetalleDePlan.css"
+import BannerInfinito from "../bannerInfinito/BannerInfinito";
 
 const DetalleDePlan = () => {
     const form = useRef();
@@ -147,10 +148,13 @@ const DetalleDePlan = () => {
                 <Button type="submit" className="DetallePlan-btn w-100 mt-2">
                    ENVIAR FORMULARIO
                 </Button>
+                
             </Form>
             </Col>
         </Row>
-    </Container> 
+        
+    </Container>
+        <BannerInfinito className="my-4"></BannerInfinito> 
     </>
   )
 }
