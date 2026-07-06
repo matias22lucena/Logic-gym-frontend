@@ -15,10 +15,8 @@ const DetalleDePlan = () => {
         formState: { errors },
     } = useForm();
 
-
     const onSubmit = (data) => {
         
-
     emailjs.send(
       'service_jrhz7v4', 
       'template_mmydrwv', 
@@ -55,8 +53,8 @@ const DetalleDePlan = () => {
         <Row className="justify-content-center">
             <Col xs={12} md={8} lg={6}>
             <div className="text-center mb-5">
-                <h1>¿que dudas tenes sobre nuestros planes?</h1>
-                <p>Completa este formulario para obtener mas informacion sobre nuestros planes.</p>
+                <h1>Contanos un poco sobre vos!</h1>
+                <p>Rellena este formulario para mas informacion y ponerte en contacto con nosotros.</p>
             </div>
             <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-4" controlId="formNombre">
@@ -110,7 +108,40 @@ const DetalleDePlan = () => {
                    <Form.Text className="text-danger fw-bold">
                       {errors.user_phone?.message}
                    </Form.Text>
+                   
                 </Form.Group>
+
+                <Form.Group className="mb-4" controlId="formLesion">
+                  <Form.Label className="detallePlan-lesion">¿Tenes alguna lesion?</Form.Label>
+                  <Form.Select
+                    {...register ("user_lesion", { 
+                      required: "Este es un campo obligatorio",
+                      })}>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                  </Form.Select>
+                  <Form.Text className="text-danger">
+                    {errors.user_lesion?.message}
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="mb-4" controlId="formClase">
+                  <Form.Label className="detallePlan-clase">¿Estas interesado en alguna clase?</Form.Label>
+                  <Form.Select
+                    {...register ("user_clase", { 
+                      required: "Este es un campo obligatorio",
+                      })}>
+                    <option value="Ninguna">Ninguna</option>
+                    <option value="Crossfit">Crossfit</option>
+                    <option value="Boxeo">Boxeo</option>
+                    <option value="Spinning">Funcional</option>
+                    <option value="Yoga">Yoga</option>
+                  </Form.Select>
+                  <Form.Text className="text-danger">
+                    {errors.user_clase?.message}
+                  </Form.Text>
+                </Form.Group>
+
 
                 <Button type="submit" className="DetallePlan-btn w-100 mt-2">
                    ENVIAR FORMULARIO
