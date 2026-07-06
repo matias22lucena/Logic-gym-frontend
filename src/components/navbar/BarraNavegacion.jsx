@@ -35,11 +35,11 @@ const BarraNavegacion = ({ usuarioLogueado, setUsuarioLogueado }) => {
             </Nav.Link>
 
             {usuarioLogueado?.rolUsuario === "admin" && (
-  <NavDropdown
-    title="Admin"
-    id="admin-dropdown"
-    className="custom-link"
-  >
+<NavDropdown
+  title="Admin"
+  id="admin-dropdown"
+  className="admin-dropdown"
+>
     <NavDropdown.Item as={NavLink} to="/administrador">
       Panel
     </NavDropdown.Item>
