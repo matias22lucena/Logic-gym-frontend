@@ -13,6 +13,11 @@ import "./VistaUsuario.css";
 const VistaUsuario = ({ usuarioLogueado }) => {
   const navigate = useNavigate();
 
+  const [user, setUser] = useState(null); 
+  const [clases, setClases] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const [vistaActiva, setVistaActiva] = useState("clases"); 
+
   const [esMovilOTablet, setEsMovilOTablet] = useState(window.innerWidth < 992);
   const [paginaActual, setPaginaActual] = useState(1);
   const itemsPorPagina = 3;
