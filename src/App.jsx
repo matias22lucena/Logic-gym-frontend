@@ -10,6 +10,7 @@ import { CartProvider } from "./components/carrito/carrito.jsx";
 import SobreNosotros from "./pages/SobreNosotros.jsx";
 import Contacto from "./pages/Contacto.jsx";
 import HomePage from "./pages/HomePage";
+import DetalleDePlan from "./components/detalleDePlan/DetalleDePlan.jsx";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin.jsx";
 import PanelUsuarios from "./pages/PanelUsuarios.jsx";
 import PanelAdministrador from "./pages/PanelAdministrador.jsx";
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/sobrenosotros" element={<SobreNosotros />} />
+            <Route path="/detalle" element={<DetalleDePlan/> } />
 
             <Route
               path="/login"
