@@ -47,3 +47,26 @@ export const crearClase = async (claseNueva) => {
     };
   }
 };
+export const eliminarClase = async (id) => {
+  try {
+    const respuesta = await fetch(`${URL_CLASES}/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await respuesta.json();
+
+    return {
+      ok: respuesta.ok,
+      data,
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      ok: false,
+      data: {
+        mensaje: "No se pudo conectar con el servidor",
+      },
+    };
+  }
+};
