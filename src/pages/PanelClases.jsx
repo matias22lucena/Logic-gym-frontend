@@ -11,7 +11,11 @@ import {
   Badge,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { crearClase, obtenerClases } from "../helpers/queriesClases";
+import {
+  crearClase,
+  obtenerClases,
+  eliminarClase,
+} from "../helpers/queriesClases";
 
 const PanelClases = () => {
   const [clases, setClases] = useState([]);
@@ -122,6 +126,38 @@ const PanelClases = () => {
     cargarClases();
   };
 
+  const handleEliminarClase = async (id) => {
+    const confirmacion = await Swal.fire({
+      title: "¿Eliminar clase?",
+      text: "Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (!confirmacion.isConfirmed) return;
+
+    const { ok, data } = await eliminarClase(id);
+
+    if (!ok) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: data.mensaje || "No se pudo eliminar la clase",
+      });
+      return;
+    }
+
+    Swal.fire({
+      icon: "success",
+      title: "Clase eliminada",
+      text: data.mensaje || "La clase fue eliminada correctamente",
+    });
+
+    cargarClases();
+  };
+
   const mostrarClases = () => {
     if (error) {
       return <Alert variant="danger">{error}</Alert>;
@@ -153,7 +189,7 @@ const PanelClases = () => {
               <td>{clase.profesor}</td>
               <td>{clase.fecha}</td>
               <td>{clase.hora}</td>
-              
+
               <td>
                 {clase.activa ? (
                   <Badge bg="success">Activa</Badge>
@@ -161,11 +197,16 @@ const PanelClases = () => {
                   <Badge bg="secondary">Inactiva</Badge>
                 )}
               </td>
+
               <td>
-              <Button variant="danger" size="sm">
-                Eliminar
-              </Button>
-            </td>
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleEliminarClase(clase._id)}
+                >
+                  Eliminar
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -263,7 +304,6 @@ const PanelClases = () => {
           <Card className="shadow">
             <Card.Body>
               <Card.Title>Clases registradas</Card.Title>
-
               {mostrarClases()}
             </Card.Body>
           </Card>
