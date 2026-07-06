@@ -14,6 +14,8 @@ import {
   eliminarUsuario,
 } from "../helpers/queriesUsuarios";
 
+import "./PanelUsuarios.css";
+
 const Administrador = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [error, setError] = useState("");
@@ -175,6 +177,7 @@ const Administrador = () => {
 
   return (
     <>
+    <section className="panel-usuarios-page">
       <Container className="my-5">
         <h1 className="mb-3">Panel de usuarios</h1>
 
@@ -184,7 +187,7 @@ const Administrador = () => {
 
         {mostrarUsuarios()}
       </Container>
-
+</section>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Editar usuario</Modal.Title>
