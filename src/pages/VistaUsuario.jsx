@@ -198,7 +198,7 @@ const VistaUsuario = ({ usuarioLogueado }) => {
           <h1 className="fw-bold">
             Hola, <span className="text-info">{user?.nombre || "Invitado"}</span> 
           </h1>
-          <p className="text-muted">Gestioná tus entrenamientos y turnos disponibles.</p>
+          <p className=" text-white">Gestioná tus entrenamientos y turnos disponibles.</p>
         </div>
 
         <Row>
@@ -227,7 +227,7 @@ const VistaUsuario = ({ usuarioLogueado }) => {
             {vistaActiva === "clases" ? (
               <div className="d-flex flex-column gap-2">
                 {clasesAMostrar.length === 0 ? (
-                  <p className="text-muted py-3">No hay clases programadas por el administrador.</p>
+                  <p className=" text-white py-3">No hay clases programadas por el administrador.</p>
                 ) : (
                   clasesAMostrar.map((clase) => {
                     const yaReservado = clase.alumnos?.includes(user?._id);
