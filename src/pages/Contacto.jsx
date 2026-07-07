@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import "./Contacto.css"
+import BannerInfinito from "../components/bannerInfinito/BannerInfinito";
 
 const Contacto = () => {
 
@@ -19,7 +20,7 @@ const Contacto = () => {
 
 
     const onSubmit = (data) => {
-        console.log("Datos que van a EmailJS:", data)
+       
 
     emailjs.send(
       'service_jrhz7v4', 
@@ -52,7 +53,7 @@ const Contacto = () => {
     };
 
   return (
-
+<>
     <Container className="contacto-wrapper py-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
@@ -91,7 +92,7 @@ const Contacto = () => {
                     required: "El email es un dato obligatorio",
                     pattern: {
                         value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                        message: "El mail debe ser un correo valido por ej: juanperez@mail.com"
+                        message: "El email debe ser un correo valido por ej: juanperez@mail.com"
                     }
                   })} 
                 />
@@ -132,7 +133,8 @@ const Contacto = () => {
         </Col>
       </Row>
     </Container>
-
+    <BannerInfinito className="my-4"></BannerInfinito>
+</>
   )
 }
 

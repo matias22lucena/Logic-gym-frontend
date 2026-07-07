@@ -15,14 +15,27 @@
   --font-main: 'Outfit', 'system-ui', -apple-system, sans-serif;
 }
 
-.home-bg {
-  background-color: var(--bg-primary);
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+.home-bg {
+  background-color: var(--bg-primary);
+  width: 100%;
+  max-width: 100%;
+}
 .home-bg .card-dark {
-  background-color: #11131a ;
-  border-color: #222735 ;
-  color: #e5e5e5 ;
+  background-color: #11131a;
+  border-color: #222735;
+  color: #e5e5e5;
 }
 
 .home-bg .card-dark .card-body,
@@ -52,7 +65,7 @@
   position: relative;
   overflow: hidden;
   background-color: var(--bg-primary);
-  height: 640px; 
+  height: 640px;
   min-height: 420px;
   text-align: center;
 }
@@ -70,14 +83,24 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.36) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.36) 100%
+  );
   z-index: 2;
   pointer-events: none;
 }
 
+/* CLIMA */
+
 .clima-widget {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(10, 14, 22, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.15); 
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(10, 14, 22, 0.95)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 22px;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
@@ -93,7 +116,7 @@
   height: 72px;
   min-width: 72px;
   border-radius: 50%;
-  background: rgba(255, 183, 77, 0.15); 
+  background: rgba(255, 183, 77, 0.15);
   border: 1px solid rgba(255, 183, 77, 0.4);
   display: flex;
   align-items: center;
@@ -119,16 +142,18 @@
   align-items: center;
   padding: 0.5rem 0.85rem;
   border-radius: 999px;
-  background: rgba(255, 183, 77, 0.1); 
+  background: rgba(255, 183, 77, 0.1);
   border: 1px solid rgba(255, 183, 77, 0.35);
-  color: #ffffff; 
+  color: #ffffff;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
 .clima-tip {
-  color: #94a3b8; 
+  color: #94a3b8;
 }
+
+/* SERVICIOS */
 
 .servicio-card {
   background: rgba(15, 23, 42, 0.88);
@@ -167,10 +192,12 @@
 }
 
 .servicios-carousel {
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
   position: relative;
 }
-
 .servicios-track {
   display: flex;
   gap: 1.5rem;
@@ -178,6 +205,7 @@
   animation: scrollServicios 30s linear infinite;
   align-items: stretch;
   padding-bottom: 0.5rem;
+  will-change: transform;
 }
 
 .servicios-track .servicio-card {
@@ -190,14 +218,26 @@
 }
 
 @keyframes scrollServicios {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+/* PRODUCTOS */
 
 .producto-card {
   padding: 0;
@@ -269,6 +309,9 @@
   letter-spacing: 1px;
   cursor: default;
 }
+
+/* PLANES */
+
 .card-plan-title {
   letter-spacing: 0.5px;
   font-size: 1.1rem;
@@ -279,6 +322,8 @@
   line-height: 1.7;
   color: var(--text-gray);
 }
+
+/* ENTRENADORES */
 
 .prof-img-wrapper {
   overflow: hidden;
@@ -291,7 +336,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(8, 8, 8, 0.6) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -308,35 +353,18 @@
   transform: scale(1.06);
 }
 
+/* Bootstrap ya maneja el ancho de las columnas.
+   No forzamos flex ni gap para evitar scroll horizontal. */
 .trainers-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.trainers-row > .col-md-3 {
-  flex: 0 0 calc(25% - 1.5rem);
-  max-width: calc(25% - 1.5rem);
-}
-
-@media (max-width: 992px) {
-  .trainers-row > .col-md-3 {
-    flex: 0 0 calc(50% - 1.5rem);
-    max-width: calc(50% - 1.5rem);
-  }
-}
-
-@media (max-width: 576px) {
-  .trainers-row > .col-md-3 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+  overflow-x: hidden;
 }
 
 .trainer-name {
   color: #f2f2f2 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
+
+/* COMENTARIOS */
 
 .comentarios {
   background-color: var(--bg-primary);
@@ -410,50 +438,26 @@
   color: var(--accent-blue);
 }
 
-@media (max-width: 992px) {
-  .cuadricula-3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+/* CINTA INFINITA */
 
-@media (max-width: 768px) {
-  .cuadricula-3 {
-    grid-template-columns: 1fr;
-  }
-
-  .tarjeta-testimonio {
-    padding: 30px;
-  }
-
-  .tarjeta-testimonio::before {
-    top: 5px;
-    left: 15px;
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    height: 420px;
-    padding: 0;
-  }
-}
 .cinta-container {
   overflow: hidden;
   background: linear-gradient(135deg, #1565c03f 0%, #0d48a1 100%);
   position: relative;
   display: flex;
   align-items: center;
-  transform: rotate(-1.5deg) scale(1.05);
+  transform: rotate(-1.5deg);
   box-shadow: 0 6px 30px rgba(41, 121, 255, 0.25);
   z-index: 10;
 }
 
 .cinta-container--full-width {
   width: 100vw;
+  max-width: 100vw;
+  position: relative;
   left: 50%;
-  right: 50%;
   margin-left: -50vw;
+  overflow: hidden;
 }
 
 .cinta-track {
@@ -491,17 +495,46 @@
 .cinta-logo:hover {
   transform: scale(1.5);
 }
-.cinta-container--full-width {
-  width: 100vw;
-  left: 50%;
-  transform: rotate(-1.5deg) scale(1.05) translateX(-50%);
-  margin-left: 0;
-}
 
 @keyframes desplazar-cinta {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+  .cuadricula-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 420px;
+    padding: 0;
+  }
+
+  .cuadricula-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .tarjeta-testimonio {
+    padding: 30px;
+  }
+
+  .tarjeta-testimonio::before {
+    top: 5px;
+    left: 15px;
+    font-size: 4rem;
+  }
+}
+
 @media (min-width: 480px) {
   .cinta-track {
     gap: 3rem;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 import { ContextoCarrito } from "../components/carrito/carrito.jsx";
@@ -28,6 +28,11 @@ import clasesg from '../assets/clasesgrupales.jpg';
 import salam from '../assets/SaladeMusculación.jpg';
 import evaluacionf from '../assets/evaluacionfisica.jpg';
 import yoga from '../assets/yoga.jpg';
+
+import mati from '../assets/matias.png';
+import diego from '../assets/diegoCoach.jpeg';
+import mili from '../assets/milagrosCoach.png';
+import mariano from '../assets/marianoCoach.png';
 
 const mapaImagenesServicios = {
   salam,
@@ -140,7 +145,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPlanes = async () => {
       try {
-        const { data } = await API.get('/carrito');
+        const res = await fetch('http://localhost:3000/api/planes');
+        const data = await res.json();
         setPlanes(data);
       } catch (error) {
         console.error("Error al cargar planes desde el backend:", error);
@@ -156,7 +162,8 @@ const HomePage = () => {
 
     const fetchProductos = async () => {
       try {
-        const { data } = await API.get('/productos');
+        const res = await fetch('http://localhost:3000/api/productos');
+        const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           setProductos(data);
         }
@@ -250,28 +257,14 @@ const HomePage = () => {
             {producto.descripcion}
           </p>
           
-          <div className="d-flex justify-content-between align-items-center mt-auto mb-3">
+          <div className="d-flex justify-content-between align-items-center mt-auto">
             <span className="fw-bold producto-precio">
-              ${producto.precio}
+              ${producto.precio.toLocaleString('es-AR')}
             </span>
             <span className="small fw-bold text-uppercase producto-tag-local">
               En local
             </span>
           </div>
-
-          <Button
-            type="button"
-            className="w-100 fw-bold py-2 btn-blue"
-            style={{ fontSize: '0.85rem' }}
-            onClick={() => agregarAlCarrito({
-              nombre: producto.nombre,
-              categoria: producto.categoria,
-              precio: producto.precio,
-            })}
-            aria-label={`Agregar ${producto.nombre} al carrito`}
-          >
-             AGREGAR AL CARRITO
-          </Button>
         </div>
 
       </div>
@@ -305,7 +298,6 @@ const HomePage = () => {
   </div>
 </div>
 
-<hr className="section-divider my-5" />
         <hr className="section-divider my-5" />
         <div id="planes" className="text-center mb-5">
           <h2 className="fw-bold display-5 mt-2 mb-3">EMPEZÁ HOY TU CAMBIO</h2>
@@ -347,10 +339,10 @@ const HomePage = () => {
 
         <Row className="g-4 mb-5 justify-content-center trainers-row">
           {[
-            { nombre: 'Diego', esp: 'Especialista en Musculación y Fuerza', img: publicidad1 },
-            { nombre: 'Matias', esp: 'Coordinador de Box y Funcional', img: publicidad2 },
-            { nombre: 'Milagros', esp: 'Instructora de Ritmos y Cardio', img: publicidad3 },
-            { nombre: 'Mariano', esp: 'Entrenador Funcional', img: publicidad4 }
+            { nombre: 'Diego', esp: 'Especialista en Musculación y Fuerza', img: diego },
+            { nombre: 'Matias', esp: 'Coordinador de Box y Funcional', img: mati },
+            { nombre: 'Milagros', esp: 'Instructora de Ritmos y Cardio', img: mili },
+            { nombre: 'Mariano', esp: 'Entrenador Funcional', img: mariano }
           ].map((prof, index) => (
             <Col key={index} sm={6} md={3}>
               <Card className="text-center border-0 bg-transparent">
@@ -375,15 +367,15 @@ const HomePage = () => {
         <section className="comentarios">
           <div className="container">
             <div className="text-center mb-5">
-              <h2 className="fw-bold display-5 mt-2 mb-3">OPIONIONES <span className="text-blue">REALES</span></h2>
+              <h2 className="fw-bold display-5 mt-2 mb-3">OPINIONES <span className="text-blue">REALES</span></h2>
             </div>
             <div className="cuadricula-3">
               <div className="tarjeta-testimonio">
                 <p>"Excelente ambiente y la calidad del equipamiento de fuerza es insuperable. El staff realmente sabe lo que hace y te corrigen la técnica al detalle."</p>
                 <div className="informacion-usuario">
-                  <div className="imagen-usuario">srcum</div>
+                  <div className="imagen-usuario">SM</div>
                   <div className="detalles-usuario">
-                    <h4>Scrum cambiar nombre</h4>
+                    <h4>Sil</h4>
                   </div>
                 </div>
               </div>
