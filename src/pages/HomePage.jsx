@@ -142,6 +142,10 @@ const HomePage = () => {
   
   const { agregarAlCarrito } = useContext(ContextoCarrito);
 
+  const handleConsultarPlan = (tituloPlan) => {
+    navigate("/detalle", { state: { planElegido: tituloPlan } });
+  };
+
   useEffect(() => {
     const fetchPlanes = async () => {
       try {
