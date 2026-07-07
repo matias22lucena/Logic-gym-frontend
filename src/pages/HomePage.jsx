@@ -23,7 +23,7 @@ import imgProteina from '../assets/proteina1.jpg';
 import heroVideo from '../assets/videoLogicGym.mp4';
 
 import asesoramiento from '../assets/asesoramientonutricional.webp';
-import box from '../assets/clasesdeBoxCrossfit.jpg';
+import box from '../assets/ClasesdeBoxCrossFit.jpg';
 import clasesg from '../assets/clasesgrupales.jpg';
 import salam from '../assets/SaladeMusculación.jpg';
 import evaluacionf from '../assets/evaluacionfisica.jpg';
