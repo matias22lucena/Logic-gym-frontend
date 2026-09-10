@@ -6,13 +6,9 @@
 }
 
 .footerLogo {
-  max-width: 120px;
+  max-width: 200px;
   margin-top: 10px;
-}
-
-.descripcionFooter {
-  color: #bdbdbd;
-  font-size: 17px;
+  background-color: #111111;
 }
 
 .redesSociales {

@@ -1,5 +1,5 @@
 import React from "react";
-import logoLogicGym from "../assets/logoLogicGym.png";
+import logicGym from "../../assets//logicGym.png";
 import { FaFacebook, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import "./footer.css";
@@ -11,16 +11,8 @@ const Footer = () => {
         <div className="row gy-4 align-items-center">
           <div className="col-lg-3 col-md-6">
             <div className="d-flex justify-content-center">
-              <img
-                src={logoLogicGym}
-                alt="Logo Logic Gym"
-                className="footerLogo"
-              />
+              <img src={logicGym} alt="Logo Logic Gym" className="footerLogo" />
             </div>
-            <p className="descripcionFooter mt-3 text-center">
-              Donde el entrenamiento fisico y la programacion se unen para
-              desarrollar la mejor version de vos mismo
-            </p>
 
             <div className="redesSociales d-flex justify-content-center">
               <a

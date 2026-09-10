@@ -1,11 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from "react-router";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import BarraNavegacion from "./components/navbar/BarraNavegacion";
-import ProtectorAdmin from "./components/routes/ProtectorAdmin"
+import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 import Registro from "./pages/RegistroPages";
 import Login from "./pages/IniciarSesionPage";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const sesionUsuario =
@@ -19,29 +20,59 @@ const App = () => {
 
   return (
     <>
-    <BrowserRouter>
-    <BarraNavegacion></BarraNavegacion>
+      <BrowserRouter>
+        <BarraNavegacion></BarraNavegacion>
 
-   <main>
-    <Routes>
-{/*       <Route path="/" element={<Home/>}/>
-      <Route path="/detalle" element={<DetalleDeProducto/>}/>
-      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
-     
-      <Route path="/contacto" element={<Contacto/>}/>
-      <Route path="/administrador" element={
-        <ProtectorAdmin usuarioLogueado={usuarioLogueado}></ProtectorAdmin>}>
-      <Route index element={<Administrador productos={productos} setProductos={setProductos}></Administrador>}/>
-      <Route path="crear" element={<FormularioProducto titulo="Crear Producto"></FormularioProducto>}/>
-      <Route path="editar/:id" element={<FormularioProducto titulo="Editar Producto"></FormularioProducto>}/>
-      </Route>
-      <Route path="*" element={<Error404></Error404>}/> */}
-      <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
-       <Route path="/registro" element={<Registro/>}/>
-    </Routes>
-   </main>
-{/*    <Footer></Footer> */}
-   </BrowserRouter>
+        <main>
+          <Routes>
+            {/* <Route path="/" element={<Home />} />
+            <Route path="/detalle" element={<DetalleDeProducto />} />
+            <Route
+              path="/login"
+              element={<Login setUsuarioLogueado={setUsuarioLogueado} />}
+            />
+
+            <Route path="/contacto" element={<Contacto />} />
+            <Route
+              path="/administrador"
+              element={
+                <ProtectorAdmin
+                  usuarioLogueado={usuarioLogueado}
+                ></ProtectorAdmin>
+              }
+            >
+              <Route
+                index
+                element={
+                  <Administrador
+                    productos={productos}
+                    setProductos={setProductos}
+                  ></Administrador>
+                }
+              />
+              <Route
+                path="crear"
+                element={
+                  <FormularioProducto titulo="Crear Producto"></FormularioProducto>
+                }
+              />
+              <Route
+                path="editar/:id"
+                element={
+                  <FormularioProducto titulo="Editar Producto"></FormularioProducto>
+                }
+              />
+            </Route>
+            <Route path="*" element={<Error404></Error404>} /> */}
+            <Route
+              path="/login"
+              element={<Login setUsuarioLogueado={setUsuarioLogueado} />}
+            />
+            <Route path="/registro" element={<Registro />} />
+          </Routes>
+        </main>
+        <Footer></Footer>
+      </BrowserRouter>
     </>
   );
 };
