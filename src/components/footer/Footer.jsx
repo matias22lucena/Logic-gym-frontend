@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container-fluid px-4">
-        <div className="row gy-4 align-items-start">
+        <div className="row gy-4 align-items-start justify-content-between">
           <div className="col-12 col-md-6 col-lg-3">
             <div className="d-flex justify-content-center">
               <img src={logicGym} alt="Logo Logic Gym" className="footerLogo" />
@@ -78,17 +78,17 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-lg-2 col-md-6 text-center">
+          <div className="col-12 col-md-6 col-lg-2">
             <h4 className="titulo">Explorar</h4>
             <div className="linksNavegacion">
+              <a href="">Información</a>
               <a href="">Planes</a>
               <a href="">Sedes</a>
-              <a href="">Información</a>
               <a href="">Inicio</a>
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6">
+          <div className="col-12 col-md-6 col-lg-3">
             <h4 className="titulo">Ubicación</h4>
             <iframe
               src={
