@@ -7,20 +7,12 @@ import "./footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container-fluid">
-        <div className="row gy-4 align-items-center">
-          <div className="col-lg-3 col-md-6">
+      <div className="container-fluid px-4">
+        <div className="row gy-4 align-items-start justify-content-between">
+          <div className="col-12 col-md-6 col-lg-3">
             <div className="d-flex justify-content-center">
-              <img
-                src={logoLogicGym}
-                alt="Logo Logic Gym"
-                className="footerLogo"
-              />
+              <img src={logicGym} alt="Logo Logic Gym" className="footerLogo" />
             </div>
-            <p className="descripcionFooter mt-3 text-center">
-              Donde el entrenamiento fisico y la programacion se unen para
-              desarrollar la mejor version de vos mismo
-            </p>
 
             <div className="redesSociales d-flex justify-content-center">
               <a
@@ -50,58 +42,53 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-lg-2 col-md-6 text-start">
+          <div className="col-12 col-md-6 col-lg-2 contactos">
             <h4 className="titulo">Contactos</h4>
-            <a
-              href="https://wa.me/543815743795"
-              target="_blank"
-              className="contacto"
-            >
-              Milagros: 1234567891
-            </a>
-            <a
-              href="https://wa.me/543813156301"
-              target="_blank"
-              className="contacto"
-            >
-              Matias: 1234567891
-            </a>
-            <a
-              href="https://wa.me/543875269167"
-              target="_blank"
-              className="contacto"
-            >
-              Mariano: 1234567891
-            </a>
-            <a
-              href="https://wa.me/543816042407"
-              target="_blank"
-              className="contacto"
-            >
-              Diego: 1234567891
-            </a>
+            <div className="d-flex flex-column">
+              <a
+                href="https://wa.me/543815743795"
+                target="_blank"
+                className="contacto"
+              >
+                Milagros: 1234567891
+              </a>
+              <a
+                href="https://wa.me/543875269167"
+                target="_blank"
+                className="contacto"
+              >
+                Mariano: 1234567891
+              </a>
+
+              <a
+                href="https://wa.me/543813156301"
+                target="_blank"
+                className="contacto"
+              >
+                Matias: 1234567891
+              </a>
+
+              <a
+                href="https://wa.me/543816042407"
+                target="_blank"
+                className="contacto"
+              >
+                Diego: 1234567891
+              </a>
+            </div>
           </div>
 
-          <div className="col-lg-2 col-md-6">
-            <h4 className="titulo">Nuestra Historia</h4>
-            <p className="descripcionFooter text-center">
-              Logic Gym nace con la idea de combinar disciplina física y mental.
-              Creemos que el cuerpo y la lógica se entrenan todos los días,
-              dentro y fuera del gimnasio
-            </p>
-          </div>
-
-          <div className="col-lg-2 col-md-6 text-center">
+          <div className="col-12 col-md-6 col-lg-2">
             <h4 className="titulo">Explorar</h4>
             <div className="linksNavegacion">
+              <a href="">Información</a>
               <a href="">Planes</a>
               <a href="">Sedes</a>
-              <a href="">Información</a>
               <a href="">Inicio</a>
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6">
+          <div className="col-12 col-md-6 col-lg-3">
             <h4 className="titulo">Ubicación</h4>
             <iframe
               src={
