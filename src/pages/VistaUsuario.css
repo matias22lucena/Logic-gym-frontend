@@ -1,0 +1,79 @@
+.cuerpo-reservas {
+  background-color: #111111 !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.titulo-reservas {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0766ff 0%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(7, 102, 255, 0.25);
+}
+
+
+.text-info {
+  color: #0766ff !important;
+}
+
+
+.clase-fila-compacta {
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+}
+
+.clase-fila-compacta:hover {
+  background: rgba(30, 30, 30, 1);
+  border-color: #0766ff;
+  box-shadow: 0 4px 20px rgba(7, 102, 255, 0.25);
+  transform: scale(1.01);
+}
+
+
+.clase-fila-compacta .text-muted,
+.clase-fila-compacta small,
+.clase-fila-compacta .small,
+.clase-fila-compacta svg {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+
+.btn-info {
+  background-color: #0766ff !important;
+  border-color: #0766ff !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-info:hover:not(:disabled) {
+  background-color: #0052cc !important;
+  border-color: #0052cc !important;
+  box-shadow: 0 0 12px rgba(7, 102, 255, 0.5) !important;
+}
+
+
+.tab-btn {
+  border-radius: 8px !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease !important;
+}
+
+.tab-btn.active {
+  background: #0766ff !important;
+  border-color: #0766ff !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(7, 102, 255, 0.3);
+}
+
+
+@media (max-width: 768px) {
+  .clase-fila-compacta {
+    text-align: center;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

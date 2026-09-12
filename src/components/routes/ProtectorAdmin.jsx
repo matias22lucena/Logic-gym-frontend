@@ -1,11 +1,15 @@
-import { Navigate, Outlet } from "react-router"
+import { Navigate } from "react-router-dom";
 
+const ProtectorAdmin = ({ usuarioLogueado, children }) => {
+  if (!usuarioLogueado) {
+    return <Navigate to="/login" />;
+  }
 
-const ProtectorAdmin = ({usuarioLogueado}) => {
- 
-    if(!usuarioLogueado){
-        return <Navigate to={"/login"}/>
-    }
-    return <Outlet></Outlet>
-}
-export default ProtectorAdmin
+  if (usuarioLogueado.rolUsuario !== "admin") {
+    return <Navigate to="/" />;
+  }
+
+  return children;
+};
+
+export default ProtectorAdmin;

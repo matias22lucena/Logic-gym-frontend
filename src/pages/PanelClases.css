@@ -1,0 +1,263 @@
+.panel-clases-page {
+  min-height: calc(100vh - 78px);
+  background: #000000;
+  color: #ffffff;
+  padding: 90px 0;
+}
+
+.panel-clases-header {
+  margin-bottom: 35px;
+}
+
+.panel-clases-label {
+  color: #8a8f98;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.panel-clases-title {
+  color: #ffffff;
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.panel-clases-text {
+  max-width: 760px;
+  color: #d5d9e0;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.panel-clases-card {
+  background: #0d111a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.panel-clases-card .card-body {
+  padding: 28px 22px;
+}
+
+.panel-clases-card-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.panel-clases-card-subtitle {
+  color: #8a8f98;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.panel-clases-form label {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.panel-clases-form .form-control {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 11px 12px;
+  font-size: 14px;
+}
+
+.panel-clases-form .form-control::placeholder {
+  color: #6f7684;
+}
+
+.panel-clases-form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.panel-clases-form .form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.panel-clases-form .invalid-feedback {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.panel-clases-main-btn {
+  background: #0d6efd !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  border-radius: 5px !important;
+  padding: 13px !important;
+  transition: all 0.25s ease;
+}
+
+.panel-clases-main-btn:hover {
+  background: #0b5ed7 !important;
+  transform: translateY(-1px);
+}
+
+.panel-clases-cancel-btn {
+  background: transparent !important;
+  border: 1px solid #6c757d !important;
+  color: #d7dce5 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 5px !important;
+  padding: 12px !important;
+}
+
+.panel-clases-cancel-btn:hover {
+  background: #6c757d !important;
+  color: #ffffff !important;
+}
+
+.panel-clases-table-wrapper {
+  overflow-x: auto;
+}
+
+.panel-clases-table {
+  margin-bottom: 0 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.panel-clases-table thead th {
+  background: #111827 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  padding: 14px 12px;
+}
+
+.panel-clases-table tbody td {
+  background: #0d111a !important;
+  color: #d5d9e0 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  vertical-align: middle;
+  font-size: 14px;
+  padding: 14px 12px;
+}
+
+.panel-clases-table tbody tr:hover td {
+  background: #111827 !important;
+}
+
+.panel-clases-edit-btn {
+  background: #0d6efd !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 4px !important;
+  padding: 7px 10px !important;
+}
+
+.panel-clases-edit-btn:hover {
+  background: #0b5ed7 !important;
+}
+
+.panel-clases-delete-btn {
+  background: transparent !important;
+  border: 1px solid #dc3545 !important;
+  color: #ff6b7a !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 4px !important;
+  padding: 7px 10px !important;
+}
+
+.panel-clases-delete-btn:hover {
+  background: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+.panel-clases-alert {
+  border-radius: 6px !important;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.panel-clases-card .alert-warning {
+  background: #fff3cd !important;
+  color: #664d03 !important;
+  border-color: #ffecb5 !important;
+}
+
+.panel-clases-card .alert-danger {
+  background: #f8d7da !important;
+  color: #842029 !important;
+  border-color: #f5c2c7 !important;
+}
+
+.panel-clases-card .badge {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 7px 9px;
+  border-radius: 4px;
+}
+
+@media (max-width: 991px) {
+  .panel-clases-page {
+    padding: 60px 0;
+  }
+
+  .panel-clases-card .card-body {
+    padding: 22px 18px;
+  }
+
+  .panel-clases-title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 575px) {
+  .panel-clases-page {
+    padding: 45px 0;
+  }
+
+  .panel-clases-title {
+    font-size: 30px;
+  }
+
+  .panel-clases-text {
+    font-size: 14px;
+  }
+
+  .panel-clases-edit-btn,
+  .panel-clases-delete-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .panel-clases-edit-btn {
+    margin-right: 0 !important;
+  }
+}
